@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型继承</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function Father(name, age) { //父类构建函数
+        this.name = name;
+        this.age = age;
+        this.run = function() {
+            alert(this.name + "会跑")
+        }
+
+        Father.prototype.fly = function() { //父类原型中添加方法
+            alert(this.name + "会飞")
+        }
+    }
+
+    // Father.prototype.fly = function() { //父类原型中添加方法
+    //     alert(this.name + "会飞")
+    // }
+
+    function Son(grade) { //子类的构造函数
+        this.grade = grade;
+    }
+
+
+    Son.prototype = new Father("王富贵", "87"); //将子类原型指向父类的实例
+
+    Son.prototype.drink = function() { //为子类的原型中添加方法，必须写在继承关系之后，否则会发生覆盖
+
+        alert(this.name + "会喝水")
+    }
+
+    // Son.prototype.name = "trump"
+
+    var son1 = new Son("3");
+
+
+
+    son1.eat = function() { //在实例化子类后为期添加方法
+        alert(this.name + "会吃饭")
+    }
+
+    // son1.prototype.name = "hello"; // 报错。不能通过子类的实例修改父类
+
+    console.log(son1)
+
+    son1.drink(); //王富贵喝水
+    son1.eat(); //王富贵吃饭
+
+    son1.fly(); //王富贵会飞
+    son1.run(); //王富贵会跑  
+    // 上面的run和fly方法一个在原型函数中定义，一个在构造函数中定义，都可以被访问到
+
+    son1.name = "周正" //单独修改子类的对象
+    son1.drink(); //周正贵喝水
+    son1.eat(); //周正吃饭
+
+    son1.fly(); //周正会飞
+    son1.run(); //周正会跑
+</script>
+
+</html;

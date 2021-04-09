@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <!-- <button onclick="chat()"> 点击进入聊天</button> -->
+    <button onclick="close11()">关闭当前界面</button>
+    <!-- <button onclick="print()">打印当前界面</button> -->
+</body>
+
+<script>
+    // function chat() {
+    //     window.open("https://www.baidu.com", "朗科", "width=200,height=300,top=300,left=450")
+    // }
+
+    function close11() {
+        console.log("执行到了这里");
+        window.close();
+    }
+
+    setTimeout(close11, 1000)
+
+    // function print() {
+
+    //     window.print();
+    // }
+
+    // var url = "http://www.baidu.com"; //要打开的网页地址
+    // var features = "height=500, width=800, top=100, left=100, toolbar=no, menubar=no,scrollbars = no, resizable = no, location = no, status = no "; //设置新窗口的特性
+    // //动态生成一个超链接
+    // document.write('<a href="http://www.baidu.com" target="newW">切换到C语言中文网首页</a>');
+    // var me = window.open(url, "newW", features); //打开新窗口
+    // setTimeout(function() { //定时器
+    //     if (me.closed) {
+    //         console.log("创建的窗口已经关闭。");
+    //     } else {
+    //         me.close();
+    //     }
+    // }, 5000); //半秒钟之后关闭该窗口
+
+    // win = window.open(); //打开新的空白窗口
+    // win.document.write("<h1>这是新打开的窗口</h1>"); //在新窗口中输出提示信息
+    // win.focus(); //让原窗口获取焦点
+    // win.opener.document.write("<h1>这是原来窗口</h1>"); //在原窗口中输出提示信息
+    // console.log(win.opener == window); //检测window.opener属性值
+</script>
+
+
+</html>

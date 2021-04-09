@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery/jquery.min.js "></script>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        ul {
+            list-style-type: none;
+        }
+        
+        .main {
+            width: 200px;
+            border: 1px solid;
+        }
+        
+        .main>h3 {
+            background-color: aqua;
+        }
+        
+        .main li {
+            text-align: center;
+            border-bottom: 1px solid #000;
+            background-color: blueviolet;
+        }
+        
+        .main ul {
+            display: none;
+        }
+        
+        .show {
+            display: block !important;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="con">
+        <div class="main">
+            <h3>游戏</h3>
+            <ul>
+                <li>王者荣耀</li>
+                <li>和平精英</li>
+                <li>滑雪大冒险</li>
+            </ul>
+        </div>
+
+        <div class="main">
+            <h3>体育</h3>
+            <ul>
+                <li>篮球</li>
+                <li>排球</li>
+                <li>玻璃球</li>
+            </ul>
+        </div>
+        <div class="main">
+            <h3>旅游</h3>
+            <ul>
+                <li>秦皇岛</li>
+                <li>青岛</li>
+                <li>海南岛</li>
+            </ul>
+        </div>
+        <div class="main">
+            <h3>音乐</h3>
+            <ul>
+                <li>邓紫棋</li>
+                <li>张韶涵</li>
+                <li>张靓颖</li>
+            </ul>
+        </div>
+
+
+    </div>
+
+</body>
+<script>
+    //原生js实现
+    //点击时其他隐藏，只显示点击的部分
+
+    // var divList = document.getElementsByClassName("main");
+    // for (var i = 0; i < divList.length; i++) {
+
+    //     divList[i].children[0].onclick = function() { //遍历main。找到每个h3，逐个绑定事件
+    //         if (this.nextElementSibling.className == "") { //判断h3是否第一次被点击，如果是，则显示
+    //             console.log("本个h3第一次被点击")
+    //                 //1、遍历所有的ul，清空样式
+    //             for (var j = 0; j < divList.length; j++) {
+    //                 divList[j].children[1].className = "";
+    //             }
+
+    //             this.nextElementSibling.className = "show";
+    //         } else { //判断h3是否第二次被点击，如果是，则再次消失
+    //             console.log("本个h3第n次被点击")
+    //             this.nextElementSibling.className = "";
+    //         }
+    //     }
+    // }
+
+    //jquery实现
+
+    $(
+        function() {
+            $("h3").click(function() {
+                $(this).next().show().parent().siblings().children("ul").hide();
+            })
+        }
+    )
+</script>
+
+</html>

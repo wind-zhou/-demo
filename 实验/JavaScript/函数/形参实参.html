@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<input type="text " id="num1" value="0">
+
+<select name="" id="select">
+    <option value="sum">+</option>
+    <option value="reduce">-</option>
+    <option value="mul">*</option>
+    <option value="div">/</option>
+</select>
+<!--  -->
+<input type="text" id="num2" value="0"><button onclick="test()">=</button>
+<input type="text" id="num" readonly value="0">
+
+<body>
+
+</body>
+
+<script>
+    function test() {
+        //拿到select的值
+        var symbol = document.getElementById("select").value;
+
+        // alert(symbol);
+        switch (symbol) {
+            case "sum":
+
+                // alert(您选择的是加法);
+                sum();
+                break;
+            case "reduce":
+                // alert(您选择的是减法);
+                reduce();
+                break;
+            case "mul":
+                // alert(您选择的是乘法);
+                multiplication();
+                break;
+            case "div":
+                // alert(您选择的是除法);
+                division();
+                break;
+        }
+        //加
+        function sum() {
+            var x = document.getElementById("num1").value;
+            var y = document.getElementById("num2").value;
+            document.getElementById("num").value = parseFloat(x) + parseFloat(y);
+        }
+
+        //减
+        function reduce() {
+            var x = document.getElementById("num1").value;
+            var y = document.getElementById("num2").value;
+            document.getElementById("num").value = parseFloat(x) - parseFloat(y);
+        }
+
+        //乘
+        function multiplication() {
+            var x = document.getElementById("num1").value;
+            var y = document.getElementById("num2").value;
+            document.getElementById("num").value = parseFloat(x) * parseFloat(y);
+        }
+
+        //除
+        function division() {
+            var x = document.getElementById("num1").value;
+            var y = document.getElementById("num2").value;
+            if (y == 0) {
+                alert("输入错误")
+            }
+            document.getElementById("num").value = parseFloat(x) / parseFloat(y);
+        }
+    }
+</script>
+
+</html>

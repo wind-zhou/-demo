@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="abc.go" method="GET" enctype="application/x-www-form-urlencoded" id="myform">
+        <table>
+            <tr>
+                <td>姓名：</td>
+                <td><input type="text" id="username"><span>*</span></td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input type="password" id="password"><span>*</span>
+
+                </td>
+            </tr>
+            <tr>
+                <td>确认密码：</td>
+                <td><input type="password" id="rePassword"><span>*</span></td>
+            </tr>
+            <tr>
+                <td>手机号：</td>
+                <td><input type="text" id="tel"><span>*</span></td>
+            </tr>
+            <tr>
+                <td>邮箱：</td>
+                <td><input type="email" id="email"><span>*</span></td>
+            </tr>
+            <tr>
+                <td> <button type="submit">提交</button></td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+<script>
+    //给各个input绑定事件
+    document.getElementById("username").oninput = testUsername;
+    document.getElementById("password").onchange = vertifyPassword;
+    document.getElementById("rePassword").oninput = reVertifyPassword;
+    document.getElementById("tel").oninput = vertifyTel;
+    document.getElementById("email").oninput = vertifyEmail;
+    document.getElementById("myform").onsubmit = vertifySubmit;
+
+    //验证用户名
+    function testUsername() {
+        var strLen = this.value.length;
+        if (strLen < 2) {
+            this.nextElementSibling.innerHTML = "字数太少了铁汁！";
+            this.nextElementSibling.style.color = "red"
+        } else if (strLen > 5) {
+            this.nextElementSibling.innerHTML = "字数太长了铁汁！";
+            this.nextElementSibling.style.color = "red"
+        } else {
+            this.nextElementSibling.innerHTML = "√";
+            this.nextElementSibling.style.color = "green";
+        }
+    }
+
+
+    //验证密码
+    function vertifyPassword() {
+        var strLen = this.value.length;
+        if (strLen < 6) {
+            this.nextElementSibling.innerHTML = "密码不能低于6位！";
+            this.nextElementSibling.style.color = "red"
+        } else if (strLen > 10) {
+            this.value = this.value.substr(0, 10);
+            this.nextElementSibling.style.color = "green"
+            this.nextElementSibling.innerHTML = "√";
+        } else {
+            this.nextElementSibling.style.color = "green"
+            this.nextElementSibling.innerHTML = "√";
+        }
+    }
+
+    //再次验证密码
+    function reVertifyPassword() {
+        var pwd = document.getElementById("password").value;
+        var rePwd = document.getElementById("rePassword").value;
+        console.log(pwd, rePwd);
+        if (pwd == rePwd) {
+            this.nextElementSibling.style.color = "green"
+            this.nextElementSibling.innerHTML = "√";
+        } else {
+            this.nextElementSibling.innerHTML = "两次密码不一致！";
+            this.nextElementSibling.style.color = "red"
+        }
+    }
+
+    //验证手机号
+    function vertifyTel() {
+        var tel_reg = /^(13|15|16|17|19)[0-9]{9}$/;
+        var tel = document.getElementById("tel").value;
+        var isPass = tel_reg.test(tel);
+        console.log(isPass);
+        if (isPass) { //如果验证通过
+            this.nextElementSibling.style.color = "green"
+            this.nextElementSibling.innerHTML = "√";
+        }
+        if (!isPass) {
+            this.nextElementSibling.innerHTML = "手机号格式不正确！";
+            this.nextElementSibling.style.color = "red"
+        }
+    }
+    //验证邮箱
+    function vertifyEmail() {
+        var email_reg = /^([0-9a-zA-Z_])+@([a-zA-Z0-9_]+(\.[a-zA-Z0-9_]{2,3}))$/;
+        var email = document.getElementById("email").value;
+        var isEmail = email_reg.test(email);
+
+        if (isEmail) {
+            this.nextElementSibling.style.color = "green"
+            this.nextElementSibling.innerHTML = "√";
+        }
+
+        if (!isEmail) {
+            this.nextElementSibling.innerHTML = "email格式不正确！";
+            this.nextElementSibling.style.color = "red"
+        }
+    }
+    //最后提交验证
+    function vertifySubmit() {
+        var ToSubmit = true;
+        var spanList = document.getElementsByTagName("span");
+        for (var i = 0; i < spanList.length; i++) { //遍历span
+            console.log(spanList[i]);
+            var content = spanList[i].innerHTML;
+            var IsSubmit = (content == "√")
+            ToSubmit = ToSubmit && IsSubmit;
+            if (!ToSubmit) {
+                return false;
+            }
+            // console.log(IsSubmit);
+        }
+    }
+</script>
+
+</html>

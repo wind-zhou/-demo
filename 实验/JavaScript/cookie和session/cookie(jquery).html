@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/jquery.cookie.js"></script>
+    <title>cookie</title>
+</head>
+
+<body>
+    <li>姓名：<input type="text" id="username"></li>
+    <li>密码：<input type="text" id="password"></li>
+    <li><button id="btn">提交</button></li>
+
+</body>
+
+<script>
+    $(function() {
+        var cookieCon = $.cookie('the_cookie');
+        $("#username").val(cookieCon)
+
+        function login() {
+
+            var userName = $("#username").val();
+            var userPwd = $("#password").val();
+            $.ajax({
+
+                url: 'http://www.qhdlink-student.top/student/login.php',
+                data: {
+                    username: userName,
+                    userpwd: userPwd,
+                    userclass: 64,
+                    type: 4
+                },
+
+                dataType: "text",
+                type: 'post',
+                success: function(data) {
+                    console.log(data)
+                    if (data == 'ok') {
+                        $.cookie('the_cookie', 'zyp', {
+                            expires: 1
+                        });
+                        console.log($.cookie('the_cookie'))
+                    }
+                }
+            })
+        }
+        $("#btn").click(login)
+    })
+</script>
+
+</htm

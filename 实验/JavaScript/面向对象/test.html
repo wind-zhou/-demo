@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>插件</title>
+
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // var queryString = location.search.slice(1);
+        // var qsArr = queryString.split("&");
+        // var qsObj = new Object(); //或者  var qsObj = {};
+        // for (var i in qsArr) {
+        //     var qsd = qsArr[i].split("=");
+        //     qsObj[qsd[0]] = qsd[1];
+        // }
+        // console.log(qsObj)
+
+        // function sayName() {
+        //     console.log("I am " + this.name)
+        // }
+
+        var person = { //使用字面量定义对象
+            name: "zhouzheng",
+            age: "24",
+            hobby: "study",
+            sayName: function() {
+                console.log("I am " + this.name)
+            }
+        }
+
+        var dog = {
+            name: "小黑",
+            height: "20cm",
+            color: "black",
+            sayName: function() {
+                console.log("I am " + this.name)
+            }
+        }
+
+        // console.log("年龄：" + person.name) //调用属性
+        person.sayName(); //调用方法
+        dog.sayName()
+        console.log(person.sayName == dog.sayName) //判断两个的方法是否指向同一个函数
+    </script>
+
+</body>
+
+</html>

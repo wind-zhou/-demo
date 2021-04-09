@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        td {
+            height: 50px;
+            width: 100px;
+            border: 1px solid #000;
+            text-align: center;
+        }
+    </style>
+</head>
+<!-- <button onclick="creatTable()">点击生成9*9乘法表</button> -->
+
+<body>
+
+</body>
+
+<script>
+    function creatTable() {
+        document.write("<table>")
+        for (var i = 1; i <= 9; i++) { //行
+            document.write("<tr>")
+
+            for (var j = 1; j <= i; j++) { //列
+                document.write("<td>" + j + "*" + i + "=" + j * i + "</td>")
+
+            }
+            document.write("</tr>")
+        }
+        document.write("</table>")
+    }
+    creatTable();
+</script>
+
+</html>

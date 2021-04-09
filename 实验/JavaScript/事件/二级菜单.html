@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        ul {
+            overflow: hidden;
+            list-style-type: none;
+        }
+        
+        #father {
+            width: 400px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+        
+        #father>li {
+            width: 100px;
+            border-right: 1px solid #000;
+            float: left;
+        }
+        
+        #father>li>ul {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="father">
+        <li>手机
+            <ul>
+                <li>huawei</li>
+                <li>apple</li>
+                <li>oppo</li>
+                <li>vivo</li>
+            </ul>
+
+        </li>
+        <li>手机
+            <ul>
+                <li>huawei</li>
+                <li>apple</li>
+                <li>oppo</li>
+                <li>vivo</li>
+            </ul>
+
+        </li>
+        <li>手机
+            <ul>
+                <li>huawei</li>
+                <li>apple</li>
+                <li>oppo</li>
+                <li>vivo</li>
+            </ul>
+
+        </li>
+        <li>手机
+            <ul>
+                <li>huawei</li>
+                <li>apple</li>
+                <li>oppo</li>
+                <li>vivo</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+<script>
+    var List = document.getElementById("father").children;
+    for (var i = 0; i < List.length; i++) {
+
+        List[i].onmouseover = function() {
+            this.children[0].style.display = "block";
+        }
+
+        List[i].onmouseout = function() {
+            this.children[0].style.display = "none";
+        }
+    }
+</script>
+
+</html>

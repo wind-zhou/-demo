@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>json 二级菜单</title>
+</head>
+
+<body>
+
+    <ul id="list">
+
+
+    </ul>
+
+</body>
+
+<script>
+    // var student = {
+    //     "name": "wind-zhou",
+    //     "age": 24,
+    //     "city": ["hengshui", "nanjing", "qinhuangdao"],
+    //     "process": function() {
+    //         console.log("hello world")
+    //     },
+    //     "friend": {
+    //         "fname": "zhun",
+    //         "tel": "30"
+    //     }
+    // }
+    // var LT = "";
+
+    // for (var i in student) {
+    //     LT += "<li>" + student[i] + "</li>"
+    // }
+
+    // document.getElementById("list").innerHTML = LT;
+
+
+
+    var navdata = {
+        "one": {
+            "tit": "产品",
+            "children": [{
+                "ctit": "手机",
+                "curl": "page/phone.html"
+            }, {
+                "ctit": "电脑",
+                "curl": "page/phone.html"
+            }]
+        },
+        "two": {
+            "tit": "新闻",
+            "children": [{
+                "ctit": "体育",
+                "curl": "page/phone.html"
+            }, {
+                "ctit": "娱乐",
+                "curl": "page/phone.html"
+            }]
+        },
+        "three": {
+            "tit": "图片",
+            "children": [{
+                "ctit": "风景",
+                "curl": "page/phone.html"
+            }, {
+                "ctit": "山脉",
+                "curl": "page/phone.html"
+            }]
+        }
+    }
+
+
+    // var firstLevel = [];
+    // var secondLevel = [];
+    // for (var i in navdata) {
+    //     firstLevel.push(navdata[i].tit)
+    //     secondLevel.push(navdata[i]["children"])
+    //         // for (var j in navdata[i]) {
+
+    //     // }
+    // }
+    // console.log(firstLevel)
+    // console.log(secondLevel)
+
+    // var first = "";
+
+
+
+    for (var first in navdata) {
+        var firstLi = document.createElement("li"); //创建一级li
+        firstLi.innerHTML = navdata[first].tit; //将一级菜单标题填入
+        var seondLevel = navdata[first].children;
+        var secondLevalUl = document.createElement("ul"); //创建二级菜单ul
+        for (var second in seondLevel) { //遍历children数组
+
+            var con = "<li><a href='" + seondLevel[second].curl + "'>" + seondLevel[second].ctit + "</a></li>"; //创建li和a
+            secondLevalUl.innerHTML += con; //将li加入ul
+        }
+
+        firstLi.appendChild(secondLevalUl); //将ul放入一级
+
+        document.getElementById("list").appendChild(firstLi); //将li放入外层ul
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li id="one"></li>
+        <li name="two"></li>
+        <li name="two"></li>
+        <li class="three"></li>
+        <li class="three"></li>
+
+        <li class="four">
+            <span class="five" style="border:1px solid #ff0000"> hello</span>
+        </li>
+    </ul>
+
+</body>
+
+<script>
+    var x = document.getElementById("one");
+    x.style.background = "pink";
+
+    var list = document.getElementsByName("two");
+
+
+
+    for (var i = 0; i < list.length; i++) {
+        list[i].style.background = "#0f0"
+    }
+
+
+    var list2 = document.getElementsByTagName("li");
+
+    for (var i = 0; i < list2.length; i++) {
+        list2[i].style.background = "purple"
+    }
+
+
+    var list3 = document.getElementsByClassName("three");
+
+    for (var i = 0; i < list3.length; i++) {
+        list3[i].innerHTML = "hello world";
+    }
+
+
+    var z = document.querySelector(".three");
+    // console.log(z.nodeName);
+    z.style.background = "green";
+
+
+
+    var x = document.querySelector(".four>.five");
+    console.log(x.nodeName);
+</script>
+
+</html>

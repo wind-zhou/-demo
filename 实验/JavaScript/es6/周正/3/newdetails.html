@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body id="con">
+
+
+
+</body>
+
+<script>
+    var queryString = location.search;
+    var num = queryString.split("=")[1];
+    console.log(num);
+
+    var dataSend = "username=zyp&userpwd=123456&userclass=64&type=4&m=" + num + "";
+
+    function sucess(dataDetailObj) {
+        var newCon = dataDetailObj[0].info_news;
+        console.log(newCon)
+        document.getElementById("con").innerHTML = newCon;
+
+    }
+
+
+    $.ajax({
+        "url": "http://www.qhdlink-student.top/student/newsinfo.php",
+        "type": "post",
+        "asyn": "true",
+        "dataType": "json",
+        "data": {
+            "username": "zyp",
+            "userpwd": "123456",
+            "userclass": "64",
+            "type": "4",
+            "m": num
+        },
+
+        success: sucess
+
+    })
+</script>
+
+</html>

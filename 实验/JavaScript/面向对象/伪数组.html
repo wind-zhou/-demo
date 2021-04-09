@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="name"></div>
+    <div class="name"></div>
+    <div class="name"></div>
+    <div class="name"></div>
+    <div class="name"></div>
+
+</body>
+
+<script>
+    var divList = document.getElementsByClassName("name");
+    console.log(divList)
+    for (var i in divList) {
+        console.log(i)
+    }
+
+    var arrayList = Array.prototype.slice.call(divList); //换换成真正的数组
+    console.log(arrayList)
+        //伪数组
+    var data = {
+        0: 'zhouzheng',
+        1: 'tom',
+        length: 3
+    }
+
+    //有什么用呢？
+    //js中有些数据只这样的形式   例如function内的arguments参数
+
+    function test() {
+        console.log(arguments)
+    }
+
+    test("hello ", "dog")
+</script>
+
+</html>

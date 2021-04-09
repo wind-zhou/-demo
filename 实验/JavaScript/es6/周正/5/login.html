@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>slogin</title>
+</head>
+
+<body>
+
+    姓名： <input type="text" class="name">
+
+    <div><button id="btn">登录</button></div>
+
+</body>
+
+<script>
+    $(function() {
+
+        $("#btn").click(function() {
+
+            var UserName = $(".name").val()
+
+            $.ajax({
+                "url": 'https://mock.mengxuegu.com/mock/605ae40a0d58b864da03d7fc/login',
+                "type": "get",
+                "asyn": "true",
+                "dataType": "json",
+                'data': {
+                    name: UserName,
+                },
+                success: function(data) {
+                    // document.write(`欢迎 ${UserName} 登录`)
+                    console.log(data)
+                }
+            })
+        })
+    })
+</script>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .con {
+            width: 100px;
+            height: 100px;
+            background: pink;
+            margin: 50px 0 0 100px;
+            transition: transform 500ms;
+        }
+        
+        .cons {
+            transform: scale(2)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="con" id="one" onclick="scale()">
+
+
+
+
+    </div>
+</body>
+<script>
+    function scale() {
+        var con1 = document.getElementById("one");
+        if (con1.getAttribute("class") == "con") {
+            con1.setAttribute("class", "con cons")
+        } else {
+            con1.setAttribute("class", "con")
+        }
+    }
+</script>
+
+
+</html>

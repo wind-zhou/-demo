@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>json 老师接口</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            border: 1px solid black;
+        }
+        
+        img {
+            display: block;
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="table">
+        <th>老师编号</th>
+        <th>老师名称</th>
+        <th>入行时间</th>
+        <th>加入朗科时间</th>
+        <th>目前职位</th>
+        <th>以前职位</th>
+        <th>评价星级</th>
+        <th>老师照片</th>
+    </table>
+</body>
+
+<script>
+    $(function() {
+        var obj = {
+            "url": "https://www.apiopen.top/findStatistics?appKey=00d91e8e0cca2b76f515926a36db68f5",
+            "type": "get",
+            "asyn": "true",
+            "dataType": "json",
+            "data": {
+                // "username": "zyp",
+                // "userpwd": "123456",
+                // "userclass": "64",
+                // "type": "4"
+                appKey: '00d91e8e0cca2b76f515926a36db68f5'
+            },
+            "success": function(data) {
+                //将拿到的数据放到表格中：一个用户一行，一个用户有多少列，有json对象里的键值对决定
+                console.log(data)
+            }
+        }
+        $.ajax(obj);
+    })
+</script>
+
+</html>

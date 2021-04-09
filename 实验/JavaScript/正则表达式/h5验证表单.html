@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="abc.go" id="myform">
+
+        <p>
+            手机号码：<input id="two" type="text" pattern="^(13|15|17|18)[0-9]{9}$">
+        </p>
+    </form>
+</body>
+
+<script>
+    var reg_tel = /^(13|15|16|17|18)[0-9]{9}$/;
+    var reg_email = new RegExp("^\w+@\w");
+
+    var tel = "17233779283";
+    var res = reg_tel.test(tel);
+    console.log(res);
+
+    document.getElementById("myform").onsubmit = function() {
+        var tel = document.getElementById("two")
+    }
+</script>
+
+</html>

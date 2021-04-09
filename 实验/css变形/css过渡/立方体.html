@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			
+			body{
+				background-image:linear-gradient( to left top,#f00 ,#00f) ;
+				perspective:1000px;
+			}
+			
+			.container{
+				
+				
+				width:300px ;
+				height: 300px;
+				margin: 200px auto;
+				transform-style: preserve-3d;
+				/*设置帧动画*/
+				animation: first_ani 4s linear 0s infinite normal;
+			}
+			
+			.face{
+				
+				width: 300px;
+				height: 300px;
+				color: white;
+				font-weight: bold;
+				font-size: 30px;
+				line-height: 300px;
+				text-align: center;
+				position: absolute;	
+			}
+			
+		
+			
+			.top{
+				background-color: rgba(0,255,0,0.6);
+				transform:rotateX(90deg) translateZ(150px) ;
+				
+			}
+			
+			.bottom{
+				background-color: rgba(222,2,0,0.6);
+				transform: rotateX(-90deg) translateZ(150px);
+			}
+			
+			.left{
+				background-color: rgba(100,100,100,0.6);
+				transform: rotateY(90deg) translateZ(150px);
+			}
+			.right{
+				background-color: rgba(1,205,0,0.6);
+				transform: rotateY(-90deg) translateZ(150px);
+			}
+			.front{
+				background-color: rgba(0,25,250,0.6);
+				transform: translateZ(150px);
+			}
+			.behind{
+				background-color: rgba(90,150,10,0.6);
+				transform: rotateX(180deg) translateZ(150px);
+			}
+			
+			
+			@keyframes first_ani{
+			from{
+				transform: rotateX(0deg) rotateY(0deg)  rotateZ(0deg);
+			}
+			to{
+				transform: rotateX(360deg) rotateY(360deg)  rotateZ(360deg);
+			}
+				}
+		</style>
+	</head>
+	<body>
+		
+		<div class="container">
+	
+			<div class="face front">前面</div>
+			<div class="face behind">后面</div>
+			
+			<div class="face top">上面</div>
+			<div class="face bottom">下面</div>
+			<div class="face left">左面</div>
+			<div class="face right">右面</div>
+		</div>
+	</body>
+</html>

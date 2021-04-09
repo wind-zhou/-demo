@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>json 菜品接口</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            border: 1px solid black;
+        }
+        
+        img {
+            display: block;
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="table">
+        <th>菜品编号</th>
+        <th>菜品名称</th>
+        <th>生产时间</th>
+        <th>失效时间</th>
+        <th>折扣</th>
+        <th>价格</th>
+        <th>评价</th>
+        <th>照片</th>
+    </table>
+</body>
+
+<script>
+    $(function() {
+        var obj = {
+            "url": "http://www.qhdlink-student.top/student/coacha.php",
+            "type": "post",
+            "asyn": "true",
+            "dataType": "json",
+            "data": {
+                "username": "zyp",
+                "userpwd": "123456",
+                "userclass": "64",
+                "type": "4"
+            },
+            "success": function(data) {
+                //将拿到的数据放到表格中：一个用户一行，一个用户有多少列，有json对象里的键值对决定
+                for (var i in data) { //遍历data
+                    var trNode = document.createElement("tr");
+                    for (var j in data[i]) { //遍历每个教师的对象
+                        if (j == "path_coach") { //单独处理j=path_coach象，因为这个里面的对应的值不能直接写在td里。需要处理一下
+                            var con = "<td><img src='http://www.qhdlink-student.top/" + data[i][j] + "'></td>";
+                            trNode.innerHTML += con; //将td写入tr
+                        } else {
+                            var con = "<td>" + data[i][j] + "</td>"; //创建每个td
+                            trNode.innerHTML += con; //将td写入tr
+                        }
+                    }
+                    document.getElementById("table").appendChild(trNode); //将每行tr加入table
+                }
+            }
+        }
+        $.ajax(obj);
+    })
+</script>
+
+</html>

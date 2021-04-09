@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul>
+        <li> 姓名：<input type="text" id="username"></li>
+        <li> 密码： <input type="password" id="password"></li>
+        <li>班级： <input type="text" id="userclass"> </li>
+        <li> 权限号码： <input type="text" id="usertype"></li>
+        <li></li>
+    </ul>
+
+    <button id="btn" type="button">登录</button>
+
+</body>
+
+<script>
+    // 每次刷新页面时获取cookie，并将相应的值填入输入框
+    var cookieOfName = document.cookie;
+    var xxxxx = cookieOfName.split('=')[1];
+    console.log(cookieOfName)
+        // document.getElementById("username").value = xxxxx;
+
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toGMTString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+
+
+    function login() {
+
+        if (window.XMLHttpRequest) {
+            var xmlHttp = new XMLHttpRequest()
+        } else {
+            var xmlHttp = new ActiveXObject("Microsoft.XMLHTTP") //兼容ie6
+        }
+
+        xmlHttp.open("post", "http://www.qhdlink-student.top/student/login.php");
+        xmlHttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+        var user = document.getElementById("username").value;
+        var pwd = document.getElementById("password").value;
+        var userclass = document.getElementById("userclass").value;
+        var ctype = document.getElementById("usertype").value;
+
+
+        var data = "username=" + user + "&userpwd=" + pwd + "&userclass=" + userclass + "&type=" + ctype;
+
+        xmlHttp.send(data);
+
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+
+                var resData = this.responseText;
+                console.log(resData)
+                setCookie("username", 'zyp', 7) //设置cookie
+                    // document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                var x = document.cookie;
+                console.log(x)
+            }
+        }
+    }
+
+    document.getElementById("btn").onclick = login;
+</script>
+
+</html>

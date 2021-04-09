@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    姓名：<input type="text" name="username" id="username" value="请输入用户名"><span>*</span>
+
+</body>
+
+<script>
+    document.getElementById("username").onfocus = function() {
+
+        var con = this.value;
+        if (con == "请输入用户名") {
+            this.value = "";
+        }
+    }
+
+    document.getElementById("username").onblur = function() {
+
+        var con = this.value.trim(); //去除字符串前后两端空格
+        if (con == "") {
+            this.value = "请输入用户名";
+        }
+    }
+</script>
+
+</html>

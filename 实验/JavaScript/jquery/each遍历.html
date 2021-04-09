@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>each遍历</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul {
+            list-style-type: none;
+            width: 200px;
+            margin-left: 400px;
+        }
+        
+        li {
+            border: 1px black solid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul id="container">
+        <li>0</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+</body>
+<script>
+    $(function() {
+
+        $("#container").children().each(function(index, value) {
+
+            if (index < 4) {
+                console.log(value) //this就是value
+                console.log($(this))
+                console.log($(value).html())
+                    // console.log($("#container").children().eq(index).html())
+            } else {
+                return false;
+            }
+
+        })
+    })
+
+
+    // $(function() {
+
+    //     var arr = [1, 66, 26, "zhou", true]
+    //     $.each(arr, function(index, val) {
+    //         console.log(val)
+    //     })
+
+    //     var data = {
+    //         a: '3',
+    //         b: '4',
+    //         c: "90",
+    //         d: "88"
+    //     }
+
+    //     $.each(data, function(key, val) {
+    //         console.log("data：" + key + "-" + val)
+    //     })
+
+    // })
+</script>
+
+
+
+</html>

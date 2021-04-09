@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        ul {
+            list-style-type: none;
+        }
+        
+        #top {
+            width: 700px;
+            height: 200px;
+            background: pink;
+            margin: 0 auto;
+        }
+        
+        .ul-1 {
+            width: 700px;
+            height: 30px;
+            margin: 0 auto;
+            background-color: blueviolet
+        }
+        
+        li {
+            float: left;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-right: 1px solid #000;
+        }
+        
+        .footer {
+            width: 700px;
+            background: pink;
+            height: 2000px;
+            margin: 0 auto;
+        }
+        
+        .fix {
+            position: fixed;
+            /* ... */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="top"></div>
+    <ul class="ul-1">
+        <li>首页
+            <ul>
+                <li>周正</li>
+                <li>周正</li>
+                <li>周正</li>
+                <li>周正</li>
+            </ul>
+        </li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+    </ul>
+
+    <div class="footer">
+
+    </div>
+
+</body>
+
+<script>
+    document.getElementById("top").onmouseover = function() {
+        document.getElementById("footer").style.display = "none";
+    }
+</script>
+
+</html>

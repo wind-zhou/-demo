@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图t</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../插件库/effectPackage.js"></script>
+    <style>
+        .container {
+            width: 400px;
+            height: 400px;
+            border: 1px solid red;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .wrapper {
+            width: 1600px;
+            height: 400px;
+            position: relative;
+        }
+        
+        .wrapper img {
+            width: 400px;
+            height: 400px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="wrapper">
+            <img src="../js案例汇总/img/city.jpg" alt="">
+            <img src="../js案例汇总/img/city2.jpg" alt="">
+            <img src="../js案例汇总/img/city4.jpg" alt="">
+            <img src="../js案例汇总/img/city3.jpg" alt="">
+        </div>
+    </div>
+
+
+
+</body>
+<script>
+    $(function() {
+        // function lbt() {
+        //     var x = $(".container").children().css("left")
+
+        //     if (parseInt(x) >= -800) {
+        //         $(".container").children().animate({
+        //             "left": "-=400px"
+        //         }, 500)
+        //     } else {
+        //         $(".container").children().animate({
+        //             "left": "0px"
+        //         }, 500)
+        //     }
+        // }
+        // setInterval(lbt, 2000)
+
+        // var x = $(".container")
+        $(".container").Carousel()
+
+        // $.Carousel(".container")
+    })
+</script>
+
+</html>

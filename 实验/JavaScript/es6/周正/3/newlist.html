@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>newList</title>
+</head>
+
+<body id="con">
+    <ul id="navlist">
+
+    </ul>
+</body>
+
+<script src="./myajax.js"></script>
+
+<script>
+    function process(data) {
+        //1、遍历data
+        console.log(data)
+        var navlist = document.getElementById("navlist");
+        for (var i in data) {
+            var listcon = "<li><a target='blank' href='newdetails.html?m=" + data[i].id_news + "'>" + data[i].title_news + " " + data[i].time_news + "</a></li>";
+            navlist.innerHTML += listcon;
+        }
+    }
+
+    $.ajax({
+        "url": "http://qhdlink-student.top/student/newsa.php",
+        "type": "post",
+        "asyn": "true",
+        "dataType": "json",
+        "data": {
+            "username": "zyp",
+            "userpwd": "123456",
+            "userclass": "64",
+            "type": "4"
+        },
+
+        success: process
+
+    })
+</script>
+
+</html>

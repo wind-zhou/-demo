@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise Ajax</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function getData() { //封装promise 接收数据
+        let pro = new Promise(function(resolve, reject) {
+
+            let xml = new XMLHttpRequest();
+            xml.open('post', 'http://www.qhdlink-student.top/student/coach.php');
+            xml.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+            xml.send('username=zyp&userpwd=123456&userclass=64&type=4');
+
+            xml.onreadystatechange = function() {
+                if (this.readyState !== 4) {
+                    return;
+                }
+                if (this.status == 200) {
+                    let data = this.responseText;
+                    resolve(data); //改变状态，并将数据写进promise
+                } else {
+                    reject(new Error(this.status))
+                }
+            }
+        })
+        return pro;
+    }
+
+    let teacherData = getData();
+    console.log(getData())
+
+    teacherData.then(function(data) { //处理数据
+        console.log(data)
+    }, function(err) {
+        console.log(err)
+    })
+
+    // teacherData.then(function(data) { //处理数据
+    //     console.log(data)
+    // }).catch(function(err) { //catch用来捕获错误，一方面是接收数据时的错误，一方面是promise内部的错误（例如语法的错误）
+    //     console.log(err)
+    // })
+
+
+    // 
+    // teacherData.then(function(data) { //处理数据
+    //     console.log(data)
+    // }).catch(function(err) { //catch用来捕获错误，一方面是接收数据时的错误，一方面是promise内部的错误（例如语法的错误）
+    //     console.log(err)
+    // }).finally(function() {
+    //     console.log(111)
+    // })
+</script>
+
+</html>

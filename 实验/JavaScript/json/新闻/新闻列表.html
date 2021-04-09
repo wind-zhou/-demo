@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body id="con">
+    <ul id="navlist">
+
+    </ul>
+</body>
+
+<script src="./myajax.js"></script>
+
+<script>
+    function process(data) {
+        //1、遍历data
+        console.log(data)
+        var navlist = document.getElementById("navlist");
+        for (var i in data) {
+            var listcon = "<li><a target='blank' href='newsdatail.html?m=" + data[i].id_news + "'>" + data[i].title_news + " " + data[i].time_news + "</a></li>";
+            navlist.innerHTML += listcon;
+        }
+    }
+    myajax("post", "http://qhdlink-student.top/student/newsa.php", "username=zyp&userpwd=123456&userclass=64&type=4", process)
+</script>
+
+
+
+</html>

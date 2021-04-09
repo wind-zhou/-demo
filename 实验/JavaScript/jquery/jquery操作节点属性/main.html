@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery-3.5.1.min.js"></script>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background: #f00;
+        }
+        
+        .two {
+            width: 100px;
+            height: 100px;
+            background: #0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        hello world!
+    </div>
+
+</body>
+<script>
+    $(function() {
+        $("div").click(function() {
+            if ($("div").attr("class") == "one") {
+                $("div").attr("class", "two");
+            } else {
+                $("div").attr("class", "one")
+            }
+        })
+    })
+</script>
+
+</html>

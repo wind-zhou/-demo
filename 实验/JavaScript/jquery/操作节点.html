@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+
+    <button id="btn">按钮</button>
+
+    <div id="con" style="border:1px solid #000000">
+
+    </div>
+
+    <h3>周正</h3>
+    <h3>大好人</h3>
+
+
+</body>
+
+<script>
+    $(
+        function() {
+            $("#btn").click(function() {
+                // $("#con").append("<h1>hello</h1>")
+                // $("#con").append($("h3"))
+                // $("h3").appendTo($("#con"))
+
+                // $("#con").after($("<p> 新年快乐！</p>"))
+                // $("<p> 新年快乐！</p>").insertAfter($("#con"))
+            })
+        }
+    )
+</script>
+
+</html>

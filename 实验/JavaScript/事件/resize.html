@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="con"></div>
+
+</body>
+<script>
+    function mediaQuery() {
+        var x = this.innerWidth;
+        var fs = x * 100 / 640;
+        document.getElementsByTagName("html")[0].style.fontSize = fs + "px";
+    }
+
+    window.onresize = mediaQuery;
+    mediaQuery();
+</script>
+
+</html>

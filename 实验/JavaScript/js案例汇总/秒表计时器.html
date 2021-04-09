@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="con">00:00:00</div>
+    <button onclick="start()"> 开始</button>
+    <button onclick="stop()"> 结束</button>
+
+
+</body>
+
+<script>
+    var s = 0;
+    var m = 0;
+    var h = 0;
+
+
+    var ss = "";
+    var mm = "";
+    var hh = "";
+
+
+    var state = true;
+
+    function start() {
+
+        if (state) {
+            i = setInterval(function() {
+                s++;
+                if (s > 60) {
+                    m++;
+                    s = 0;
+                }
+                if (m > 60) {
+                    h++;
+                    m = 0;
+                }
+                s >= 10 ? ss = s : ss = "0" + s;
+                m >= 10 ? mm = m : mm = "0" + m;
+                h >= 10 ? hh = h : hh = "0" + h;
+                document.getElementById("con").innerHTML = hh + ":" + mm + ":" + ss;
+            }, 1000)
+        }
+
+        state = false;
+
+
+    }
+
+
+
+    function stop() {
+        clearInterval(i);
+        state = true;
+    }
+</script>
+
+</html>

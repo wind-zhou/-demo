@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>仿购物车</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul {
+            list-style-type: none;
+        }
+        
+        #container {
+            width: 1000px;
+            margin: 0 auto;
+        }
+        
+        #con {
+            margin-bottom: 50px;
+            width: 1000px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        #con>li {
+            width: 200px;
+            border: #f00 3px solid;
+        }
+        
+        #con>li>div {
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .show {
+            width: 300px;
+            background-color: aqua;
+            margin-bottom: 10px;
+            border: 1px solid #000;
+            padding-bottom: 10px;
+            display: none;
+        }
+        
+        .num {
+            display: inline-block;
+            width: 200px;
+            background: #fff;
+            margin-top: -4px;
+        }
+        
+        .main {
+            width: 400px;
+            background-color: blueviolet;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="container">
+        <ul id="con">
+            <li>
+                <div>
+                    <span>风衣</span>
+                    <button class="btn">添加进购物车</button>
+                </div>
+                <span>￥100</span>
+                <input type="num" value="1" hidden class="judge">
+            </li>
+            <li>
+                <div>
+                    <span>秋裤</span>
+                    <button class="btn">添加进购物车</button>
+                </div>
+                <span>￥1999</span>
+                <input type="num" value="1" hidden class="judge">
+            </li>
+            <li>
+                <div>
+                    <span>吊带</span>
+                    <button class="btn">添加进购物车</button>
+                </div>
+                <span>￥988</span>
+                <input type="num" value="1" hidden class="judge">
+            </li>
+            <li>
+                <div>
+                    <span>肚兜</span>
+                    <button class="btn">添加进购物车</button>
+                </div>
+                <span>￥2999</span>
+                <input type="num" value="1" hidden class="judge">
+            </li>
+        </ul>
+
+        <div class="show">
+            <!-- 商品内容模块 -->
+            <div>
+                <span>名称：</span><span class="name"></span>
+            </div>
+
+            <div>
+                <span>价格：</span><span class="price"></span>
+            </div>
+            <div class="test">
+                <span>数量：</span><span class="num" contenteditable=true> 1</span><span class="increase">+</span>
+            </div>
+        </div>
+
+        <h1>购物车</h1>
+
+        <div class="main">
+            <!-- 购物车 展示区域 -->
+
+        </div>
+
+    </div>
+</body>
+
+<script>
+    $(function() {
+        $(".btn").click(function() {
+            // 每个按钮绑定事件
+            var judge = $(this).parents("li").find(".judge").val(); //获取每次点击的次数：作用有二：1、用来标识第几次点击 2、用来联系商品数量
+            var nameOfThing = $(this).prev().html(); //获取每次点击商品的名称         
+            console.log("点击事件已触发");
+            if (judge == 1) { //第一次触发
+                var priceOfThing = $(this).parent().next().html(); //获取商品价格
+                $("#container>.show").clone(true).css("display", "block").find(".name").html(nameOfThing).end().find(".price").html(priceOfThing).end().find(".num").html(judge).end().appendTo(".main");
+                // 每次点击clone一下购物车模板，并且填入前面获取的 名称，价格、数量 等数据。
+                judge++; //每次点击标识加1
+                $(this).parents("li").find(".judge").val(judge); //将增加的标识重新写入
+            } else { //如果第二次及以上次数点击时
+                $("span:contains(" + nameOfThing + ")").parents(".show").find(".num").html(judge); //只需改变数量（通过name找到要填写的区域）
+                judge++; //改变之后，标识再次加1
+                $(this).parents("li").find(".judge").val(judge); //重新写入
+            }
+        })
+
+        //给添加数量按钮绑定事件
+        $(".increase").click(function() {
+            var count = $(this).prev().html() //获取当前的数量
+            count++; //数量加1
+            $(this).prev().html(count); //重新写入
+            var nameOfClick = $(this).parents(".show").find(".name").html();
+            //上面这行是关键,每次点击数量增加后还要将这个标识再次回写到的商品里，这是为了下次点击时数量会在现在的数量基础上累加
+            $("span:contains(" + nameOfClick + ")").parents("li").find(".judge").val(count + 1); //注：这里需要回填count+1,因为规律是标识比数量多1
+        })
+    })
+
+
+    /*思路分析：
+     *html部分主要是三部分：
+     *
+     *（1）商品信息模块
+     *（2）购物车格式模型模块
+     *（3）购物车显示模块
+     *
+     *js交互部分分了两块来写
+     *
+     *（1）每个按钮绑定事件
+     *     - 当第一次点击时，在购物车显示区域显示所点击的商品信息
+     *       具体实现：第一次点击时clone() 购物车格式模型模块，并填写信息，最后appendTo到 购物车显示模块
+     *     - 第二次及以上点击时，只改变购物车商品的数量信息
+     *       具体实现：每次点击时，首先要找到购物车显示模块的里已经存在的相关模块（通过每次点击的商品名称定位）
+     *     关键点：这块的关键点主要是如何判别第一次和第二次点击，以及如何根据点击找到指定节点并修改数量 。
+     *             因为每个按钮点击的次数是跟随每个按钮的，因此属于他们的私有属性，所以要在他们每个btn所在的块上下功夫。
+     *             这里给每个商品快里添加个input标记来进行标识，他有两个作用：<1>标识点击的次数<2>同时也可以标识商品的数量
+     *             （刚开始我写时，直接定义了一个全局变量，这样每次按钮点击都能触发 ，因此便失去了作用）
+     *
+     * （2）在每个模块上每个加号绑定事件
+     *      作用：实现每次点击数量加1
+     *      这里表简单，取值加1即可，但同时还需要做到和点击按钮“btn”的数量同步。例如我手动改写数量为100，下次再次点击btn，数量要在100基础上加1
+     *      所以这里+事件还要和btn做信息的交互。这里通过改写input的值来实现。
+     *      （这里的交互只是单向的，信息只从+传递到了btn）
+     *   
+     */
+</script>
+
+
+
+</html>

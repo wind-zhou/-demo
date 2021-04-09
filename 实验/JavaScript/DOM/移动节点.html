@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3 id="zhou">周正</h3>
+    <div id="one">
+        <h1>hello world</h1>
+    </div>
+
+    <button onclick="move()"> 点击移动</button>
+</body>
+
+<script>
+    function move() {
+        var h = document.getElementById("zhou");
+        // document.getElementById("one").appendChild(h); 
+        document.getElementById("one").insertBefore(h, document.getElementsByTagName("h1")[0])
+    }
+</script>
+
+</html>

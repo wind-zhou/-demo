@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        td {
+            height: 50px;
+            width: 100px;
+            border: 1px solid #000;
+            text-align: center;
+        }
+    </style>
+</head>
+<!-- <button onclick="calculate()">点我运行乘法表</button> -->
+
+<body>
+
+</body>
+<script>
+    function calculate() {
+        document.write("<table>")
+        for (var i = 1; i <= 9; i++) { //i为列，j为行
+            document.write("<tr>")
+            for (var j = 1; j <= i; j++) {
+                document.write("<td>" + j + "*" + i + "=" + i * j + "</td>")
+            }
+            document.write("</tr>")
+        }
+        document.write("</table>")
+    }
+    calculate()
+</script>
+
+</html>

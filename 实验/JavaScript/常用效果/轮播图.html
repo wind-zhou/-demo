@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #banner {
+            width: 400px;
+            height: 200px;
+        }
+        
+        #show {
+            width: 400px;
+            height: 200px;
+            /* overflow: auto;
+            overflow-y: hidden; */
+            overflow: hidden;
+        }
+        
+        #con {
+            width: 1600px;
+            height: 200px;
+        }
+        
+        #con img {
+            width: 400px;
+            height: 200px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="banner">
+        <div id="show">
+
+            <div id="con">
+                <img src="./img/city.jpg" alt="">
+                <img src="./img/city2.jpg" alt="">
+                <img src="./img/city3.jpg" alt="">
+                <img src="./img/city4.jpg" alt="">
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+<script>
+    function LBT() {
+        document.getElementById("show").scrollLeft += 1;
+        if (document.getElementById("show").scrollLeft >= 400) {
+            clearInterval(i);
+
+            //设置延时
+            setTimeout(function() {
+                i = setInterval(LBT, 10);
+            }, 1000);
+
+            document.getElementById("con").appendChild(document.getElementById("con").firstElementChild);
+            document.getElementById("show").scrollLeft = 0;
+        }
+    }
+    i = setInterval(LBT, 10)
+</script>
+
+</html>

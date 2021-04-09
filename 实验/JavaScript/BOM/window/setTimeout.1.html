@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #time {
+            height: 200px;
+            background: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="time" style="width: 10px;"></h1>
+    <button onclick="start()">开始</button>
+</body>
+<script>
+    function start() {
+        i = setInterval(function() {
+            if (parseInt(document.getElementById("time").style.width) >= 100) {
+                clearInterval(i)
+            } else {
+                document.getElementById("time").style.width = parseInt(document.getElementById("time").style.width) + 1 + "px";
+            }
+        }, 50)
+    }
+</script>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型继承</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function Father(name, age) { //父类构建函数
+        this.name = name;
+        this.age = age;
+        this.run = function() {
+            alert(this.name + "会跑")
+        }
+
+        Father.prototype.fly = function() { //父类原型中添加方法
+            alert(this.name + "会飞")
+        }
+    }
+
+    // Father.prototype.fly = function() { //父类原型中添加方法
+    //     alert(this.name + "会飞")
+    // }
+
+    function Son(grade) { //子类的构造函数
+        this.grade = grade;
+    }
+
+
+    Son.prototype = new Father("王富贵", "87"); //将子类原型指向父类的实例
+
+    var son1 = new Son("3");
+
+    son1.__proto__.eat = function() { //在实例化子类后为期添加方法
+        alert(this.name + "会吃饭")
+    }
+
+    son1.__proto__.name = "trump";
+
+    son1.eat(); //王富贵会吃饭
+
+    console.log(son1)
+</script>
+
+</html;

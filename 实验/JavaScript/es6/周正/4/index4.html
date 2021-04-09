@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="../bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <title>Document</title>
+
+    <style>
+        #table td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="table" class="table table-hover">
+
+    </table>
+
+</body>
+
+
+
+
+<script>
+    var xhr = new XMLHttpRequest
+    xhr.open("POST", "https://mock.mengxuegu.com/mock/605ae40a0d58b864da03d7fc/address")
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded")
+    xhr.send()
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var data = JSON.parse(this.responseText)
+            console.log(data.data.projects)
+            data1 = data.data.projects
+            console.log(data1)
+            for (var i in data1) {
+                var trlist = ""
+                trlist = "<td>" + data1[i].address + "</td>" + "<td>" + data1[i].email + "</td>" + "<td>" + data1[i].number + "</td>"
+                document.getElementById("table").innerHTML += trlist
+            }
+        }
+    }
+</script>
+
+</html>

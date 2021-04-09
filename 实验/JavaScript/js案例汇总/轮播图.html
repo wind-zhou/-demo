@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        #banner {
+            margin: 0 auto;
+            width: 400px;
+            height: 200px;
+            position: relative;
+        }
+        
+        #show {
+            width: 400px;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        #con {
+            width: 1600px;
+            height: 200px;
+        }
+        
+        #con img {
+            width: 400px;
+            height: 200px;
+            float: left;
+        }
+        
+        #focus {
+            list-style-type: none;
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+        }
+        
+        #focus li {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            float: left;
+            background: #fff;
+            margin-right: 10px;
+        }
+        
+        .active {
+            background: #000000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="banner">
+        <div id="show">
+
+            <div id="con">
+                <img date-index="0" src="./img/city.jpg" alt="">
+                <img date-index="1" src="./img/city2.jpg" alt="">
+                <img date-index="2" src="./img/city3.jpg" alt="">
+                <img date-index="3" src="./img/city4.jpg" alt="">
+            </div>
+
+            <ul id="focus">
+                <li class="active" show-index="0"></li>
+                <li show-index="1"></li>
+                <li show-index="2"></li>
+                <li show-index="3"></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    //基本思想:
+    //1、外层使用setInterval  
+    //2、内层的函数负责滚动条的移动，和判断拉回
+    //3、移动节点
+    function LBT() {
+        //核心函数：没次滚动条右移，当长度超过400px，则移动节点
+        document.getElementById("show").scrollLeft += 10;
+        if (document.getElementById("show").scrollLeft >= 400) {
+            document.getElementById("con").appendChild(document.getElementById("con").firstElementChild); //每次移动第一个儿子
+            document.getElementById("show").scrollLeft = 0; //置零滚动条
+            clearInterval(f);
+            start();
+        }
+    }
+
+    //之前写的有一些bug，就是第一张图第一次时没有延时就进行了轮播
+    //解决方案：把第一张图也设置在setTimeout里。
+
+    function start() {
+        setTimeout(function() {
+            f = setInterval(LBT, 100);
+            //接下来是根据图片切换下方的圆圈
+            //需要两步1、获得当前的图片编号2、将图片编号和ul里的li对应起来
+            //这里切换的时机也有讲究，此时是定时结束后，下一张图片要切换的时候，进行下方的变色
+            //因此将颜色转换函数写在此处
+            //1、
+            var di = document.getElementById("con").firstElementChild.getAttribute("date-index"); //这里只需找第一个儿子即可
+            // console.log(di)  //debug
+
+            //2、接下来将对应的li通过添加类，变换背景色
+
+            //添加的方法也是两步走：
+            //（1）先将所有的li的class都置空
+            var liList = document.getElementById("focus").children;
+            for (var i = 0; i < liList.length; i++) {
+                liList[i].className = "";
+            }
+            //（2）将相应的li添加类
+            // console.log(parseInt(di) % 4);  //debug
+            liList[(parseInt(di) + 1) % 4].className = "active";
+
+            //注：这个题的到这一步的最根本就是如何找得到的索引值date-index和liList[index]里面index之间的关系。
+            //   date-index 0      index   1
+            //              1              2
+            //              2              3
+            //              3              0
+
+            //   所以关系为  index=(date-index+1)%4;
+        }, 2000)
+    }
+
+    //点击焦点切换图片
+    var showList = document.getElementById("focus").children;
+    //遍历绑定事件
+    for (var k = 0; k < showList.length; k++) {
+        showList[k].onclick = function() {
+            var showIndex = this.getAttribute("show-index");
+            console.log(showIndex);
+            //1、清空样式
+            for (var m = 0; m < showList.length; m++) {
+                showList[m].className = "";
+            }
+            //2、设置激活
+            this.className = "active";
+            //改变相应图片
+        }
+
+    }
+    start(); //第一次调用一次
+</script>
+
+</html>

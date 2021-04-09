@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function a() {
+        console.log(this);
+    }
+
+    var obj = {
+        name: "zhouzheng",
+        age: 24,
+        fun: function() {
+            console.log(this)
+        }
+    }
+
+    function Dog(color, height) {
+        this.color = color;
+        this.height = height;
+        this.fun = function() {
+            console.log(this)
+        }
+    }
+
+    var dog1 = new Dog("黑色", "20cm");
+
+
+    a();
+    obj.fun();
+    dog1.fun();
+</script>
+
+</html>

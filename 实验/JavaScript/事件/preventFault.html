@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #test {
+            width: 300px;
+            height: 500px;
+            margin: 0 auto;
+            padding: 20px 30px;
+            background-color: red;
+            border: 10px solid aqua;
+        }
+        
+        #inner {
+            height: 100%;
+            background-color: #fff;
+        }
+        
+        .one {
+            height: 500px;
+        }
+        
+        ul {
+            list-style-type: none;
+        }
+        
+        li {
+            border: 1px black solid;
+            line-height: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <form action="test.php" method="GET" id="myform" name="username">
+        用户名： <input type="submit" value="登录">
+    </form> -->
+
+    <div class="one">
+
+        <!-- </div>
+    <div id="test">
+        <div id="inner">
+
+        </div>
+
+    </div> -->
+
+        <ul id="ul">
+            <li class="item">1</li>
+            <li class="item">2</li>
+            <li class="item">3</li>
+            <li class="item">4</li>
+            <li class="item">5</li>
+        </ul>
+
+        <button id="btn">点击添加节点</button>
+
+</body>
+<script>
+    document.getElementById("myform").onsubmit = function(event) {
+        e = window.event || e; //兼容性写法
+
+        console.log(e)
+            //1、标准写法  
+            //event.preventDefault();
+            //2、兼容IE写法  
+        if (event.preventDefault()) {
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    }
+
+    // console.log(window)
+    // document.getElementById("test").onclick = function(e) {
+    //     e = window.event || e; //兼容性写法
+    //     console.log(e)
+    //         // console.log("offsetX:" + e.offsetX)
+    //         // console.log("offsetY:" + e.offsetY)
+
+    //     console.log("clientX:" + e.clientX)
+    //     console.log("clientY:" + e.clientY)
+
+
+    //     console.log("screenX:" + e.screenX)
+    //     console.log("screenY:" + e.screenY)
+
+
+    //     console.log("pageX:" + e.pageX)
+    //     console.log("pageY:" + e.pageY)
+
+    //     console.log("X:" + e.x)
+    //     console.log("Y:" + e.y)
+    // }
+
+
+    document.getElementById("ul").onclick = function(e) {
+        var e = e || window.event //event兼容写法
+        var target = e.target || e.srcElement //target兼容写法
+
+        if (e.target.nodeName == "LI") {
+            e.target.style.background = "red";
+        }
+    }
+
+    document.getElementById("btn").onclick = function() {
+        var nodeDiv = document.createElement("li");
+        document.getElementById("ul").appendChild(nodeDiv)
+
+    }
+</script>
+
+</html>

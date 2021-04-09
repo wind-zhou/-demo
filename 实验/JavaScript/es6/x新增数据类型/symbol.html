@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>symbol </title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // let s1 = Symbol('s1');
+    // let s2 = Symbol('s2'); //加这个参数是为了区分两个symbol，转成字符串是可以区分，主要作为对象的属性名
+
+    // console.log(s1, s2)
+
+    let name = Symbol()
+
+    let obj = {
+        [name]: 'wind-zhou'
+    }
+
+    console.log(obj[name])
+</script>
+
+</html>

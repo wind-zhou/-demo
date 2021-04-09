@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="ul"></ul>
+</body>
+
+<script>
+    var arr = [2, 4, 6, 2, 5, 7, 11, 52, 7]
+        // for (var i = 0; i < arr.lenght; i++) {
+        //     if (arr[i] % 2 == 0) {
+        //         arr[i] *= 2;
+        //     }
+
+    // }
+
+
+    arr.forEach(function(value, index, arr) {
+
+        //将数组元素放入li
+        // ulist.innerHTML += "<li>" + value + "</li>"
+        //读取或插入标记的内容  往ulist里写东西
+
+
+        arr[index] = value * 2;
+    })
+
+    console.log(arr)
+</script>
+
+</html>

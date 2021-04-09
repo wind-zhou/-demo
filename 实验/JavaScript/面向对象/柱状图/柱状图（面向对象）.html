@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .container {
+            border: 1px solid black;
+            margin: 0 auto;
+            width: 1000px;
+        }
+        
+        li {
+            list-style-type: none;
+        }
+        
+        #inputData li,
+        #inputData {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            border: 0 none;
+            outline: none;
+        }
+        
+        #no {
+            background-color: green;
+        }
+        
+        #btn {
+            background-color: #ccc;
+        }
+        
+        #btn:active {
+            background-color: green;
+        }
+    </style>
+    <title>柱状图</title>
+</head>
+
+<body>
+
+    <div id="inputData">
+        <li> 柱状图间隔：<input type="number" min="20" max="100" id="gap" value="30"></li>
+        <li> 圆柱的个数：<input type="number" min="5" max="15" id="num" value="6"></li>
+        <li>是否使用随机色？ <button id="yes">是</button> <button id="no">否</button></li>
+        <li> <button id="btn">生成图表</button> </li>
+    </div>
+
+
+
+
+    <div class="container">
+        <canvas id="canvas" width='1000px' height='600px'> </canvas>
+    </div>
+
+
+</body>
+
+
+<script>
+    var mycan = document.getElementById("canvas");
+    var submit = document.getElementById("btn");
+    var yesBtn = document.getElementById("yes");
+    var noBtn = document.getElementById("no");
+
+    //随机生成颜色
+    function randomColor() {
+        var colorStr = '#';
+        var color = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f'];
+        for (var i = 0; i < 6; i++) {
+
+            var randomIndex = Math.floor(Math.random() * 16);
+            colorStr += color[randomIndex];
+        }
+        return colorStr;
+    }
+
+    var color = 'green' //默认为不使用，为绿色
+        //是否使用随机色n
+
+    var isUseRandomColor = false; //设置一个标志状态，使用随机色为true，否则为false
+
+    yesBtn.onclick = function() { //点击事件触发时，改用标志状态
+        isUseRandomColor = true;
+        noBtn.style.backgroundColor = "#eee";
+        this.style.backgroundColor = "green";
+    }
+    noBtn.onclick = function() {
+        isUseRandomColor = false;
+        yesBtn.style.backgroundColor = "#eee";
+        this.style.backgroundColor = "green";
+    }
+
+
+    submit.onclick = function() {
+
+
+
+        //获取input
+        var gapNode = document.getElementById("gap");
+        var numNode = document.getElementById("num");
+
+        // var preNum = 0;
+
+        //获取数据
+        var gapInt = parseInt(gapNode.value);
+        var numInt = parseInt(numNode.value);
+
+
+        if (mycan.getContext) {
+            var ctx = mycan.getContext('2d');
+            ctx.clearRect(0, 0, 1000, 600); //每次点击前清空之前的绘制
+
+
+            //绘制每个矩形柱
+            function createCol(x, y, width, height, color, numth) {
+                ctx.fillStyle = color;
+                ctx.fillRect(x, y, width, height); //创建基础矩形
+
+                //绘制下方文字
+
+                //计算文字绘制的位置
+                var fontX = x + width / 2 - 15;
+                var fontY = y + height + 18;
+                var fontCon = (2017 + numth); //横轴的内容
+
+                //绘制文字
+                ctx.fillStyle = "red";
+                ctx.font = '15px 黑体';
+                ctx.fillText(fontCon, fontX, fontY);
+
+                //每次随机擦去一个高度
+                var randomHeight = Math.floor(Math.random() * 300);
+                ctx.clearRect(x, y, width, randomHeight);
+            }
+
+            function method() { //newColumn对象的方法  生成主柱状图
+
+                //绘制坐标轴
+                var axisXstartY = this.y + this.height + 1; //x轴起点的纵坐标
+
+                //绘制x轴
+                ctx.beginPath();
+                ctx.moveTo(this.x, axisXstartY);
+                ctx.lineTo(1000, axisXstartY);
+                ctx.closePath();
+                ctx.stroke(); //描边
+
+                //绘制y轴
+                ctx.beginPath();
+                ctx.moveTo(this.x, axisXstartY);
+                ctx.lineTo(this.x, this.y - 50);
+                ctx.closePath();
+                ctx.stroke(); //描边
+
+
+                //循环生成y轴数据
+                var startpositionX = this.x - 30; //y轴文字的x坐标
+
+                for (var j = 0; j < 10; j++) {
+
+                    //每次绘制y轴数据的纵坐标
+                    var printY = axisXstartY - 60 * j;
+
+                    //绘制文字
+                    var con = (0 + 50 * j); //刻度的数值
+                    ctx.fillStyle = "red";
+                    ctx.font = '15px 黑体';
+                    ctx.fillText(con, startpositionX, printY);
+                }
+
+                if (isUseRandomColor == true) { //每次绘制图标时，检查标志状态
+
+                    //随机生成柱状图
+                    for (var i = 0; i < this.num; i++) {
+                        this.x += this.gap + this.width;
+                        var randomcolor = randomColor() //生成随机的颜色
+                        color = randomcolor;
+                        createCol(this.x, this.y, this.width, this.height, color, i);
+                    }
+                } else {
+                    //随机生成柱状图
+                    for (var i = 0; i < this.num; i++) {
+                        this.x += this.gap + this.width;
+                        createCol(this.x, this.y, this.width, this.height, color, i);
+                    }
+                }
+            }
+
+
+            //工厂模式创建对象
+            function newColumn(gap, num) {
+                var coloum = new Object();
+                coloum.x = 70; //图标的左上角横坐标
+                coloum.y = 70; //图标的左上角纵坐标
+                coloum.width = 50; //柱的宽度
+                coloum.height = 400; //柱的极限高度
+                coloum.gap = gap; //每个柱的间隔
+                coloum.num = num; //生成圆柱的数量
+                coloum.createPic = method;
+                return coloum;
+            }
+            var col1 = newColumn(gapInt, numInt); //实例化对象
+            col1.createPic(); //调用方法
+        }
+
+    }
+</script>
+
+
+
+</html>

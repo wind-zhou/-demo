@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    var str1 = "http://baidu.com?name=wind-zhou&pwd=123456&age=18";
+    //1、以问号分割一次
+    //2、截取？后面内容
+    //3、以&分隔
+    //4、遍历此时的字符串数组
+    //4.1、 以= 进行分隔
+    //4.2 将所偶需要部分存储起来
+
+
+    var str2 = str1.slice(str1.indexOf("?") + 1);
+
+    var str3 = str2.split("&");
+    var qarr = [];
+
+    for (var i in str3) {
+        var tmp = str3[i].split("=");
+        qarr.push(tmp[1]);
+    }
+    console.log(qarr)
+</script>
+
+</html>

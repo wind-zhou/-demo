@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>super</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    class Father { //创建父类
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        add() { //父类的方法
+            console.log(this.x + this.y)
+        }
+    }
+
+    //子类继承父类
+    class Son extends Father {
+        constructor(x, y) {
+            super();
+            this.x = x;
+            this.y = y;
+        }
+
+        sunstr() { //子类自己扩展的方法
+            console.log(this.x - this.y)
+        }
+    }
+
+    var son1 = new Son(10, 5)
+        // son1.add()
+    son1.sunstr()
+</script>
+
+</html>

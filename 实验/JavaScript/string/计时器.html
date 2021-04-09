@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <i id="time"></i>
+</body>
+<script>
+    function time() {
+        var date = new Date();
+        var day4 = date.getHours() //或取小时
+        var day5 = date.getMinutes() //或取分钟
+        var day6 = date.getSeconds() //或取秒
+        var day7 = date.getMilliseconds() //或取毫秒
+        document.getElementById('time').
+        innerHTML = day4 + ":" + day5 + ":" + day6 + ":" + day7
+    }
+    setInterval(time, 1)
+</script>
+
+
+</html>

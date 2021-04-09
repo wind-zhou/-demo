@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul>
+        <li> 姓名：<input type="text" id="username"></li>
+        <li> 密码： <input type="password" id="password"></li>
+        <li>班级： <input type="text" id="userclass"> </li>
+        <li> 权限号码： <input type="text" id="usertype"></li>
+        <li></li>
+    </ul>
+
+
+
+    <button id="btn" type="button">登录</button>
+
+
+
+
+</body>
+
+<script>
+    // 创建ajax对象
+    // 标准方式 不兼容低版本ie
+
+    // var xhr = new XMLHttpRequest()
+
+
+    // 兼容写法
+
+
+    function login() {
+        // 创建ajax对象
+        if (window.XMLHttpRequest) {
+            var xmlHttp = new XMLHttpRequest()
+        } else {
+            var xmlHttp = new ActiveXObject("Microsoft.XMLHTTP") //兼容ie6
+        }
+
+        console.log(xmlHttp)
+            // 初始化ajax
+        xmlHttp.open("post", "http://qhdlink-student.top/student/login.php");
+
+        // 设置请求头中的content-type 
+
+        xmlHttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+        // 拼接数据并发送数据
+        var user = document.getElementById("username").value;
+        var pwd = document.getElementById("password").value;
+        var userclass = document.getElementById("userclass").value;
+        var ctype = document.getElementById("usertype").value;
+
+        var data = "username=" + user + "&userpwd=" + pwd + "&userclass=" + userclass + "&type=" + ctype;
+
+        console.log(data)
+
+        xmlHttp.send(data);
+
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                var resdata = xmlHttp.responseText;
+                console.log(resdata)
+                alert("登陆成功")
+            }
+        }
+    }
+
+
+
+    document.getElementById("btn").onclick = login;
+    // // ajax对象的方法
+    // xmlHttp.open("post", "url") //初始化ajax
+    // xmlHttp.send() //发送数据
+
+    // // ajax的属性
+    // xmlHttp.readyState //存储ajax的状态
+    // xmlHttp.status //获取服务器返回的状态码
+    // xmlHttp.responseText //获取服务器端字符串格式数据
+</script>
+
+</html>

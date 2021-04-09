@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>formdata</title>
+
+</head>
+
+
+
+
+<body>
+
+    <form id="myform" action="http://www.qhdlink-student.top/student/newsa.php" enctype="application/x-www-form-urlencoded">
+
+        <p>姓名：<input type="text" name="username"></p>
+        <p>密码：<input type="password" name="userpwd"></p>
+        <p>班级：<input type="text" name="userclass"></p>
+        <p>权限：<input type="text" name="type"></p>
+    </form>
+    <button id="btn">提交</button>
+
+</body>
+
+<script>
+    var submit = document.getElementById("btn");
+
+    submit.onclick = function() {
+
+        var myform = document.getElementById("myform");
+        var myformdata = new FormData(myform);
+
+
+        if (window.XMLHttpRequest) { //兼容性设置
+            var xmlHttp = new XMLHttpRequest()
+        } else {
+            var xmlHttp = new ActiveXObject("Microsoft.XMLHTTP") //兼容ie6
+        }
+
+        xmlHttp.open("post", "http://www.qhdlink-student.top/student/newsa.php");
+        xmlHttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+        xmlHttp.send(myformdata)
+
+        xmlHttp.onreadystatechange = function() {
+            if (this.readyState == "4" & this.status == "200") {
+                var resData = this.responseText;
+
+                console.log(resData)
+            }
+        }
+    }
+</script>
+
+</html>

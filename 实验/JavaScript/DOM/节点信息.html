@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 这是一个注释节点 -->
+    <div id="one">hello ,This is an element node!</div>
+
+</body>
+
+<script>
+    //1、拿到元素节点
+    var divNode = document.getElementById("one");
+    console.log("元素节点的nodeName和nodeValue和nodeType分别为：\t\t" + divNode.nodeName + "/" + divNode.nodeValue + "/" + divNode.nodeType)
+        //2、拿到属性节点(通过元素节点)
+    var attrNode = divNode.attributes[0];
+    console.log("属性节点的nodeName和nodeValue和nodeType分别为：\t\t" + attrNode.nodeName + "/" + attrNode.nodeValue + "/" + attrNode.nodeType)
+        //3、拿到文本节点
+    var textNode = divNode.firstChild;
+    console.log("文本节点的nodeName和nodeValue和nodeType分别为：\t\t" + textNode.nodeName + "/" + textNode.nodeValue + "/" + textNode.nodeType)
+        //4、拿到注释节点
+
+    var commentNode = document.body.childNodes[1];
+    console.log("注释节点的nodeName和nodeValue和nodeType分别为：\t\t" + commentNode.nodeName + "/" + commentNode.nodeValue + "/" + commentNode.nodeType)
+        //输出文档节点
+    console.log("文档节点的nodeName和nodeValue和nodeType分别为：\t\t" + document.nodeName + "/" + document.nodeValue + "/" + document.nodeType)
+</script>
+
+</html>

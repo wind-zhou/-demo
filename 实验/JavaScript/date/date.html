@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <table id="time">
+
+    </table>
+</body>
+
+<script>
+    var date = new Date(); //创建date对象
+    var day = date.getDate(); //获取日
+    var wday = date.getDay(); //获取星期
+    var month = date.getMonth() + 1; //获取月份
+    var year = date.getFullYear(); //获取年份
+
+    var hours = date.getHours(); //获取 小时
+    var minutes = date.getMinutes(); //获取 分钟
+    var seconds = date.getSeconds(); //获取 秒
+    var milliSeconds = date.getMilliseconds(); //获取 毫秒
+
+    var timeOffset = date.getTimezoneOffset();
+    var time = date.getTime(); //获取时间戳
+
+    console.log("date对象:" + date)
+    console.log("日:" + day)
+    console.log("星期:" + wday)
+    console.log("月:" + month)
+    console.log("年:" + year)
+    console.log("时:" + hours)
+    console.log("分:" + minutes)
+    console.log("秒:" + seconds)
+    console.log("毫秒:" + milliSeconds)
+    console.log("时间戳:" + time)
+    console.log("时间差:" + timeOffset)
+</script>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../插件库/effectPackage.js"></script>
+    <style>
+        .container {
+            width: 200px;
+            height: 300px;
+            position: absolute;
+            top: 200px;
+            left: 400px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button> 点击中心放大</button>
+
+    <div class="container">
+
+
+    </div>
+</body>
+
+<script>
+    $(function() {
+        // $("button").click(function() {
+        //     $(".container").animate({
+        //         "width": "400px",
+        //         "height": "500px",
+        //         "left": "300px",
+        //         "top": "100px",
+        //     }, 1000)
+        // })
+
+        $("button").centerScale(200, 400)
+    })
+</script>
+
+</html>

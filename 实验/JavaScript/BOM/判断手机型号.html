@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function test() {
+        var equip_type = "";
+        var info = navigator.appVersion.toLowerCase();
+        console.log(info);
+        var window = info.indexOf("window");
+
+        var android = info.indexOf("android");
+        var iphone = info.indexOf("iphone");
+        var ipad = info.indexOf("ipad");
+        if (window != -1) {
+            equip_type = "window"
+        }
+        if (android != -1) {
+            equip_type = "android";
+
+        }
+
+        if (ipad != -1 || iphone != -1) {
+            equip_type = "ios";
+        }
+        return equip_type;
+    }
+
+    var result1 = test();
+    console.log(result1);
+    document.write(result1);
+</script>
+
+</html>

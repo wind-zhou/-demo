@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+·
+
+<body>
+    <span>测试 oninput</span>
+    <input type="text" name="username" id="test1"><span>*</span> <br>
+    <span>测试onput</span>
+    <input type="text" name="username" id="test2"><span>*</span>
+
+</body>
+
+<script>
+    document.getElementById("test1").oninput = function() {
+        var len = this.value.length;
+        console.log(len)
+        if (len < 5) {
+            this.nextSibling.innerHTML = "长度太小了弟弟！"
+        } else {
+            this.nextSibling.innerHTML = "";
+        }
+    }
+
+
+    document.getElementById("test2").onchange = function() {
+        var len = this.value.length;
+        console.log(len)
+        if (len < 5) {
+            this.nextSibling.innerHTML = "长度太小了弟弟！"
+        } else {
+            this.nextSibling.innerHTML = "";
+        }
+    }
+</script>
+
+</html>

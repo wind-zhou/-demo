@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="one">1</div>
+    <div class="one">1</div>
+    <div class="one">1</div>
+    <div class="one">1</div>
+    <div class="one">1</div>
+</body>
+
+<script>
+    let obj = {
+        foo: '123',
+        bar: 'wind'
+    };
+
+    obj.name = 'zhouzheng'
+    var arr = [1, 2, 3]
+
+    var x = Object.getOwnPropertyDescriptor(arr, 'length')
+    var divLIst = document.getElementsByClassName("one");
+    //for in只能遍历可枚举的属性 for in 不能遍历dom节点集合
+
+    for (var i in divLIst) {
+        console.log(i)
+    }
+    // console.log(x)
+</script>
+
+</html>

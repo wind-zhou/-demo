@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="add()">点击添加数组元素</button>
+    <button onclick="del()">删除第二个元素</button>
+</body>
+
+<script>
+    var arr = [13, 55, 20]
+
+    function add() {
+        arr.push("你好")
+        console.log(arr)
+    }
+
+    function del() {
+        delete arr[2]
+        console.log(arr)
+    }
+</script>
+
+</html>

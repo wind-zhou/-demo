@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .container {
+            border: 1px solid black;
+            margin: 0 auto;
+            width: 1000px;
+        }
+        
+        .control {
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            width: 100px;
+            font-size: 30px;
+            margin-right: 30px;
+        }
+        
+        .btn:hover {
+            background-color: aqua;
+        }
+    </style>
+    <title>柱状图</title>
+</head>
+
+<body>
+    <div class="container">
+        <canvas id="canvas" width='1000px' height='600px'> </canvas>
+    </div>
+
+    <div class=" control">
+        <button id="start" class="btn ">开始</button>
+        <button id="end" class="btn">结束</button>
+
+    </div>
+</body>
+<script>
+    var mycan = document.getElementById("canvas");
+    if (mycan.getContext) {
+        var ctx = mycan.getContext('2d');
+
+        function randomColor() {
+            //设置随机颜色
+            var colorStr = '#';
+            var color = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f'];
+            for (var i = 0; i < 6; i++) {
+
+                var randomIndex = Math.floor(Math.random() * 16);
+                colorStr += color[randomIndex];
+            }
+            return colorStr;
+        }
+
+
+        function createCol(x, y, width, height, color) {
+            //绘制每个矩形
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, width, height); //创建基础矩形
+
+            var randomHeight = Math.floor(Math.random() * 300); //每次随机擦去一个高度
+            ctx.clearRect(x, y, width, randomHeight);
+        }
+
+
+
+        function createPic(obj) {
+            //随机生成柱状图
+            for (var i = 0; i < 10; i++) {
+
+                obj.x += obj.gap + obj.width;
+                // console.log(obj.x)
+
+                var color = randomColor()
+
+                createCol(obj.x, obj.y, obj.width, obj.height, color);
+            }
+        }
+
+        var option = { //x，y左上角位置   width为宽度  height为高度的极限值
+            x: 10,
+            y: 100,
+            width: 50,
+            height: 400,
+            gap: 30
+        }
+
+        var btnStart = document.getElementById("start");
+        var btnEnd = document.getElementById("end");
+
+
+        var state = false; //state表示是否可以关闭计时器
+        btnEnd.onclick = function() {
+
+            console.log("end")
+            if (state == true) {
+                clearInterval(w)
+            }
+            state = false;
+        }
+
+        btnStart.onclick = function() {
+            console.log("start")
+            if (state == false) {
+                w = setInterval(function() {
+                    ctx.clearRect(0, 0, 1000, 600)
+                    option.x = 10;
+                    createPic(option)
+                }, 200)
+            }
+            state = true;
+        }
+    }
+</script>
+
+
+
+</html>

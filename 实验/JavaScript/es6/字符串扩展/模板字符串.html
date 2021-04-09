@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>template</title>
+</head>
+
+<body>
+    <div id="con"></div>
+</body>
+
+<script>
+    let name = 'zhouzheng';
+    let age = 24;
+    //传统模式
+    document.getElementById("con").innerHTML = "我的名字为：" + name + "我的年龄为：" + age + "<br>";
+    //模板字符串模式
+    //里面可以加表达式
+    document.getElementById("con").innerHTML += `我的名字为: ${name}我的年龄为：${age>20?'符合要求':'不符合'}`;
+</script>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>构造继承</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function Father(sColor) { //父类1
+        this.color = sColor;
+        this.sayColor = function() {
+            alert(this.color)
+        }
+    }
+
+
+
+    function Son1(bColor, name) { //子类1
+
+        this.newMethod = Father;
+
+        this.newMethod(bColor); //继承父类
+
+        delete this.newMethod; //删除newMethod方法
+
+        this.name = name;
+
+        this.sayName = function() {
+
+            alert(this.name)
+        }
+    }
+
+    function Son2(bColor, height) { //子类2
+
+        this.newMethod = Father;
+
+        this.newMethod(bColor); //继承父类
+
+        delete this.newMethod; //删除newMethod方法
+
+        this.height = height;
+
+        this.sayHeight = function() {
+
+            alert(this.height)
+        }
+    }
+
+
+
+
+    var son1 = new Son1("red", "周正"); //实例化子类1
+    var son2 = new Son2("blue", "173cm"); //实例化子类2
+
+    son1.color = "yellow"; //子类1修改继承过来的属性
+
+
+    console.log(son1)
+    console.log(son2)
+</script>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        #top {
+            width: 700px;
+            height: 200px;
+            background: pink;
+            margin: 0 auto;
+        }
+        
+        .nav {
+            list-style-type: none;
+            width: 700px;
+            height: 30px;
+            margin: 0 auto;
+            background-color: blueviolet;
+            opacity: 1;
+            transition: all 0;
+        }
+        
+        li {
+            float: left;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-right: 1px solid #000;
+        }
+        
+        .footer {
+            width: 700px;
+            background: pink;
+            height: 2000px;
+            margin: 0 auto;
+        }
+        
+        .fix {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%)
+            /* ... */
+        }
+        
+        .trans {
+            /* 设置透明属性 */
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="top"></div>
+    <ul id="nav" class="nav">
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+    </ul>
+
+    <div class="footer">
+        fwioeuf9weuf9-vu-09erj[pk块级【开票【哦VB诶看人品【概况【不骗人就不怕【我就让他回家不打牌【价目表vpembjrb0[p ]] fwioeuf9weuf9-vu-09erj[pk块级【开票【哦VB诶看人品【概况【不骗人就不怕【我就让他回家不打牌【价目表vpembjrb0[p ]] fwioeuf9weuf9-vu-09erj[pk块级【开票【哦VB诶看人品【概况【不骗人就不怕【我就让他回家不打牌【价目表vpembjrb0[p ]] fwioeuf9weuf9-vu-09erj[pk块级【开票【哦VB诶看人品【概况【不骗人就不怕【我就让他回家不打牌【价目表vpembjrb0[p
+        ]] fwioeuf9weuf9-vu-09erj[pk块级【开票【哦VB诶看人品【概况【不骗人就不怕【我就让他回家不打牌【价目表vpembjrb0[p ]] fwioeuf9weuf9-vu-09erj[pk块级【开票【哦VB诶看人品【概况【不骗人就不怕【我就让他回家不打牌【价目表vpembjrb0[p ]] fwioeuf9weuf9-vu-09erj[pk块级【开票【哦VB诶看人品【概况【不骗人就不怕【我就让他回家不打牌【价目表vpembjrb0[p ]] fwioeuf9weuf9-vu-09erj[pk块级【开票【哦VB诶看人品【概况【不骗人就不怕【我就让他回家不打牌【价目表vpembjrb0[p
+        ]] fwioeuf9weuf9-vu-09erj[pk块级【开票【哦VB诶看人品【概况【不骗人就不怕【我就让他回家不打牌【价目表vpembjrb0[p ]] fwioeuf9weuf9-vu-09erj[pk块级【开票【哦VB诶看人品【概况【不骗人就不怕【我就让他回家不打牌【价目表vpembjrb0[p ]] fwioeuf9weuf9-vu-09erj[pk块级【开票【哦VB诶看人品【概况【不骗人就不怕【我就让他回家不打牌【价目表vpembjrb0[p ]] fwioeuf9weuf9-vu-09erj[pk块级【开票【哦VB诶看人品【概况【不骗人就不怕【我就让他回家不打牌【价目表vpembjrb0[p
+        ]] fwioeuf9weuf9-vu-09erj[pk块级【开票【哦VB诶看人品【概况【不骗人就不怕【我就让他回家不打牌【价目表vpembjrb0[p ]]
+    </div>
+
+</body>
+
+<script>
+    function scroll() {
+
+        var topScroll = document.documentElement.scrollTop;
+        if (topScroll > 200) {
+            clearClass();
+
+            document.getElementById("nav").className = "nav fix";
+            //给导航条设置滑动显示功能，不滑动式便渐渐隐形
+        } else {
+            document.getElementById("nav").className = "nav";
+        }
+    }
+
+    window.onscroll = scroll;
+    //用于当滚轮
+    function clearClass() {
+        setTimeout(function() {
+            document.getElementById("nav").className = "nav trans";
+        }, 5000)
+    }
+</script>
+
+</html>

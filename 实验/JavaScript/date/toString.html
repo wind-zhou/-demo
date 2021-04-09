@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    var date = new Date(); //创建date对象
+
+    var toString = date.toString(); //直接转换成字符串
+
+    var toDateString = date.toDateString(); //转换日期部分
+    var toTimeString = date.toTimeString(); //转换时间部分
+
+    var utcString = date.toUTCString(); //根据世界时间转换成字符串
+    var localString = date.toLocaleString(); //根据本地时间转换成字符串
+
+    var localTimeString = date.toLocaleTimeString(); //根据本地时间，转换时间部分为字符串
+    var localDateString = date.toLocaleDateString(); //根据本地时间，转换时间部分为字符串
+
+
+    console.log("date对象:\t\t" + date)
+    console.log("toString:\t\t" + toString)
+    console.log("date 日期部分:\t\t" + toDateString)
+    console.log("date 时间部分:\t\t" + toTimeString)
+
+    console.log("utc时间:\t\t" + utcString)
+    console.log("本地时间:\t\t" + localString)
+
+    console.log("本地日期时间部分:\t\t" + localDateString)
+    console.log("本地时间时间部分:\t\t" + localTimeString)
+</script>
+
+</html>

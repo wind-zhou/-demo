@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <title>1</title>
+
+    <style>
+        #nav>li ul {
+            display: none;
+        }
+        /*         
+        #nav>li:hover ul {
+            display: block;
+        } */
+    </style>
+</head>
+
+<body>
+
+    <ul id="nav">
+        <li>333</li>
+    </ul>
+
+</body>
+
+<script>
+    $(function() {
+
+
+        $.ajax({
+            "url": 'https://mock.mengxuegu.com/mock/605ae40a0d58b864da03d7fc/slidenav',
+            "type": "post",
+            "asyn": "true",
+            "dataType": "json",
+            success: function(data) {
+                var dataObj = data.data
+                    //遍历数组
+                var ulNode = document.getElementById("nav");
+                for (var i in dataObj) {
+
+                    //创建li
+                    var liNode = document.createElement("li");
+
+                    console.log(dataObj[i])
+
+                    var firstMenu = dataObj[i].firstNav
+                    console.log(firstMenu)
+                    liNode.innerHTML = firstMenu;
+
+
+                    //判断是否有二级导航
+
+                    var secondMenu = dataObj[i].secondNav;
+                    if (secondMenu) {
+                        // console.log("有二级导航")
+
+                        // console.log(secondMenu);
+
+                        // 创建ul节点
+
+                        var secondUlNode = document.createElement("ul");
+
+                        //遍历数组
+
+                        for (var j in secondMenu) {
+                            var secondLiNode = document.createElement("li");
+                            var secondCon = secondMenu[j].name;
+                            secondLiNode.innerHTML = secondCon
+                            secondUlNode.appendChild(secondLiNode)
+                        }
+
+                        liNode.appendChild(secondUlNode); //将二级ul插入li
+                    }
+                    ulNode.appendChild(liNode) //插入以及导航、
+
+
+                }
+
+            }
+        })
+
+
+        $("#nav").on('mouseenter', 'li', function() {
+            $(this).children("ul").show()
+        })
+
+        $("#nav").on('mouseleave', 'li', function() {
+            $(this).children("ul").hide()
+        })
+
+    })
+
+
+    // window.onload = function() {
+    //     var ulNode = document.getElementById("nav")
+    //     ulNode.onmouseenter = function(e) {
+
+    //         console.log(111)
+    //         if (e.target.nodeName == "LI") {
+    //             // this.target.
+
+    //             console.log(222)
+    //         }
+    //     }
+    // }
+</script>
+
+</html>

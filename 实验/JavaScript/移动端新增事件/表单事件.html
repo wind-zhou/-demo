@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        #test {
+            width: 100%;
+            height: 300px;
+            background-color: #0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test">
+
+    </div>
+</body>
+
+<script>
+    var t = document.getElementById("test");
+    t.addEventListener("touchstart", function() {
+        console.log("touchstart")
+    })
+
+    t.addEventListener("touchend", function() {
+        console.log("touchstend")
+    })
+
+    t.addEventListener("touchmove", function() {
+        console.log("touchnove")
+    })
+</script>
+
+</html>

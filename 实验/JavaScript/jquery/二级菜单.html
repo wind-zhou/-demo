@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../插件库/effectPackage.js"></script>
+    <title>二级菜单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        ul {
+            list-style-type: none;
+            line-height: 30px;
+        }
+        
+        #menuContainer {
+            width: 900px;
+            margin: 0 auto;
+        }
+        
+        .menu_item {
+            width: 300px;
+            float: left;
+            text-align: center;
+            border-right: 1px solid #ffffff;
+            background-color: aqua;
+        }
+        
+        .menu_item ul li {
+            background-color: brown;
+            border-bottom: 1px #ffffff solid;
+            border-right: 1px solid #ffffff;
+        }
+        
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul id="menuContainer">
+        <li class="menu_item">
+            number
+            <ul class="hide">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+        </li>
+
+        <li class="menu_item">
+            letter
+            <ul class="hide">
+                <li>a</li>
+                <li>b</li>
+                <li>c</li>
+                <li>d</li>
+            </ul>
+
+
+        </li>
+
+        <li class="menu_item">
+            Operator
+            <ul class="hide">
+                <li>+</li>
+                <li>-</li>
+                <li>*</li>
+                <li>/</li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+
+<script>
+    $(function() {
+        // $("#menuContainer").children(".menu_item").mouseenter(function() {
+        //     $(this).children("ul").slideDown()
+        // }).mouseleave(function() {
+        //     $(this).children("ul").slideUp()
+        // })
+
+        $("#menuContainer").SecondaryMenu(".menu_item", "ul")
+    })
+</script>
+
+</html>

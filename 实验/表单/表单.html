@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding: 0;
+			}
+			form{
+					width:300px ;
+					background-color: #00FFFF;
+					margin: 50px auto;
+					padding:20px 40px ;
+					
+					border: #000000 1px solid;
+				}
+				
+				p{
+					border: #800080 1px solid;
+					margin: 15px 0;  /*拉开各个空间的间距*/
+				}
+				
+				.lab{
+					display:inline-block;
+					width: 60px;
+					text-align: right;
+					border: #0000FF 1px solid;
+					margin-right:20px ;
+				}
+				
+				.con{       /*设置text和password的input样式*/
+				
+				    width: 150px;
+					height: 20px;
+					outline: none;  /*去掉聚焦时的外边框*/
+					border: 1px solid #000;
+					padding-left:15px ;  /*设置聚焦时光标的位置*/
+					background-color: transparent;
+				}
+				
+				select{
+					width: 100px;
+					height: 20px;
+					border: 1px solid #000;
+					background: transparent;
+				}
+				
+				textarea{
+					width: 200px;
+					height: 100px;
+					border: 1px solid #000;
+					padding: 5px;
+					resize: none;
+				}
+				
+				.radio input{
+					
+					width: 80px; /*控制两个radio的距离*/
+					height: 10px;/*设置圆圈的大小*/
+				
+					
+				}
+				#regist{
+					text-align: center;
+				}
+				
+				#regist input{
+					width: 80px;
+					height: 25px;
+					border: 1px solid #000;
+					background-color: #f00;
+					color: #fff;
+					font-weight: bold;
+					
+				}
+				
+				
+		</style>
+	</head>
+	<body>
+		<form action="#" method="post" name="myform">
+			
+			<p><label  class="lab">用户名</label> <input type="text" name="username" class="con"></p>
+			<p><label  class="lab">密码</label> <input type="password" name="pwd"  class="con"></p>
+			<p><label  class="lab">性别</label> 
+			<label class="radio"><input type="radio" name="sex" value="nan">男</label>
+			<label class="radio"><input type="radio" name="sex" value="nv">女</p></label>
+			<p><label class="lab">城市</label>
+				<select name="city"> 
+					
+					<option value="bj">北京</option>
+					<option value="sh">上海</option>
+					<option value="sz">深圳</option>
+				</select>
+			</p>
+			
+			<p>
+				<label class="lab">介绍</label>
+				<textarea   >
+					这个人很懒，什么也没有留下。
+				</textarea>
+			</p>
+			
+			<p id="regist">
+				<input type="submit" value="注册" />
+			</p>
+			
+			
+		</form>
+	</body>
+</html>

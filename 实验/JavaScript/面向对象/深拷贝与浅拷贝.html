@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深拷贝与浅拷贝</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    var x = [2, 25, 66, 25, 28, 73];
+    // var y = JSON.parse(JSON.stringify(x));
+
+    //相当于把北荣直接拿出来，然后再有我自己放进去
+
+    var x1 = JSON.stringify(x);
+    var y = JSON.parse(x1)
+    x[0] = "zhouzheng";
+    console.log(x)
+    console.log(y)
+
+    console.log(x == y)
+</script>
+
+</html>

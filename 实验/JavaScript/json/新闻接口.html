@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新闻接口</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            border: 1px solid black;
+        }
+        
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+
+
+<table id="table">
+    <th>新闻编号</th>
+    <th>标题</th>
+    <th>时间</th>
+    <th>详细信息</th>
+
+</table>
+
+
+
+</body>
+
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open("post", "http://qhdlink-student.top/student/newsa.php")
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send("username=zyp&userpwd=123456&userclass=64&type=4");
+
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 & this.status == 200) {
+            var data = this.responseText;
+            var dataObj = JSON.parse(data)
+                //1、遍历data
+            for (var i in dataObj) {
+                var trNode = document.createElement("tr");
+                for (var j in dataObj[i]) {
+                    var con = "<td>" + dataObj[i][j] + "</td>";
+                    trNode.innerHTML += con;
+                }
+
+                var tdAddNode = document.createElement("td");
+
+                var newsId = dataObj[i].id_news; //拿到id
+                console.log(newsId); //debug
+                newsDetail(newsId, tdAddNode); //显示细节
+
+                trNode.appendChild(tdAddNode);
+
+                document.getElementById("table").appendChild(trNode);
+            }
+        }
+    }
+
+
+    function newsDetail(id, node) {
+        var xhrdetail = new XMLHttpRequest();
+        xhrdetail.open("post", "http://www.qhdlink-student.top/student/newsinfo.php")
+        xhrdetail.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        xhrdetail.send("username=zyp&userpwd=123456&userclass=64&type=4&m=" + id + "");
+
+        xhrdetail.onreadystatechange = function() {
+            if (this.readyState == 4 & this.status == 200) {
+                var dataDetail = this.responseText;
+                var dataDetailObj = JSON.parse(dataDetail)
+
+                // alert(typeof(dataDetail))
+                // console.log(dataDetail) //debug
+                var newCon = dataDetailObj[0].info_news;
+                // console.log()
+                console.log(newCon)
+                node.innerHTML = newCon;
+            }
+        }
+
+    }
+</script>
+
+</html>

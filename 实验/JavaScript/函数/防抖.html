@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>防抖</title>
+
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+</body>
+
+<script>
+    //延迟函数
+    function debounces(fn, wait) {
+
+        var timeout = null; //最好给初始值
+        return function() {
+            if (timeout != null) {
+                clearTimeout(timeout); //不清除事件会累加
+            }
+            timeout = setTimeout(fn, wait) //不用写在else中
+        }
+    }
+
+    function printOne() {
+        console.log(1)
+    }
+
+    document.getElementById("btn").onclick = debounces(printOne, 1000);
+
+
+    // 防抖可以理解为防止短时间内多次触发
+
+    // 如果，第一次触发则会开启一个setTimeout计时器
+    // 如果在短时间内，又出发了一次是，则此时timeOut不为null，因此清空 计时器，并立马再次重新开始计时器
+    // 
+
+
+    //注，这个debounces函数，浏览器刷新就调用，立马执行，返回一个函数，返回的函数才是事件绑定的函数
+
+    // 思考？为什么防抖节流要用到闭包？可不可以用闭包？
+    //假如不用闭包，我要怎么写呢？
+
+
+    // 不用闭包的防抖
+
+
+    // 每次使用触发事件函数时，都要先去检查一个状态，这个状态标识判断是否可以触发执行函数，这个状态是由时间间隔决定，
+    // 那么如何根据时间间隔确定状态呢？
+    // 这个状态由于又要存储在什么地方呢？（触发事件函数内，还是函数外）
+    // 那么（1）这里我们可以使用时间戳相减并与设置的时间差相比，如果达到时间差，则调用执行函数
+    // 如果没有则不更新，并更新当前的时间戳
+    // （2）setTimeout这个函数特性，本身就可以提供一个状态判断，（等到事件过期后，timeout就会自动为null），
+    //   因此不需要我们在自己加状态判断了
+
+
+    // 不使用闭包的缺点：
+    // 上面我们看到，如果不使用闭包，则必须设置全局变量，这样便污染了全局变量，使用闭包可以将变量更好的封装起来
+</script>
+
+</html>

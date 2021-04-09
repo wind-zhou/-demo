@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>jquery ajax</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // $(function() {
+
+    //     var ajaxObj = {
+    //         url: "http://qhdlink-student.top/student/login.php",
+    //         dataType: "text",
+    //         type: "post",
+    //         data: {
+    //             "username": "zyp",
+    //             "userpwd": "123456",
+    //             "userclass": "64",
+    //             "type": "4",
+    //             "async": "true"
+    //         },
+    //         success: function(data) { //状态码等于4和200时调用，jquery会自动判断
+    //             console.log(data)
+    //         },
+    //         error: function(error) {
+    //             console.log("请求失败")
+    //         }
+    //     }
+    //     $.ajax(ajaxObj);
+    // })
+
+    $(function() {
+        var urlX = "http://www.qhdlink-student.top/student/banner.php";
+
+        var data = {
+            "username": "zyp",
+            "userpwd": "123456",
+            "userclass": "64",
+            "type": "4"
+        };
+
+        var success = function(data) { //状态码等于4和200时调用，jquery会自动判断
+            console.log(data)
+
+            console.log(typeof(data))
+        };
+
+        $.post(urlX, data, success);
+
+
+    })
+</script>
+
+</html>

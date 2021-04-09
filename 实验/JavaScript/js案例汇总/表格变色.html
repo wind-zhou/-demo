@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            width: 200px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+        
+        td {
+            border: #000 1px solid;
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <table></table>
+    <button onclick="createTab()">  点击生成表格</button>
+    <button onclick="test()">快点一下，让颜色动起来吧！</button>
+</body>
+
+<script>
+    var flag = "true";
+
+    function createTab() {
+        // var rows = prompt("输入表格的行数");
+        // var cols = prompt("输入表格的列数");
+
+        var rows = 10;
+        var cols = 10;
+        var tabNode = document.getElementsByTagName("table")[0];
+        for (var i = 0; i < rows; i++) {
+            var trNode = document.createElement("tr");
+            for (var j = 0; j < cols; j++) {
+                var tdNode = document.createElement("td");
+                tdNode.onclick = function() {
+                    clearInterval(f)
+                    flag = true;
+                    //debug
+                    console.log("此时挺值得f的值为：" + f)
+                    var bgc = this.style.backgroundColor;
+                    console.log(bgc);
+                    var tdList = document.getElementsByTagName("td");
+                    for (var k = 0; k < tdList.length; k++) {
+                        tdList[k].style.backgroundColor = bgc;
+                    }
+
+
+                }
+                trNode.appendChild(tdNode);
+            }
+            tabNode.appendChild(trNode);
+        }
+        changeColor();
+
+    }
+
+    function changeColor() {
+        //debug
+        console.log("此时开启的f的值为：" + f)
+            //初始化数组，来存放16进制的颜色取值范围
+        var color = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"]
+
+        var tdList = document.getElementsByTagName("td");
+
+        for (var i = 0; i < tdList.length; i++) {
+            //初始化存放颜色的字符串
+            var colStr = "#";
+            for (var k = 0; k < 6; k++) {
+                var ranIndex = Math.floor(Math.random() * 16);
+                colStr += color[ranIndex];
+            }
+            tdList[i].style.background = colStr;
+        }
+    }
+
+
+
+    function test() {
+        if (flag) {
+            f = setInterval(changeColor, 500)
+            flag = false;
+        }
+    }
+</script>
+
+</html>

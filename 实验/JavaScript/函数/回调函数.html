@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 回调函数
+    //定义函数 里面又以一个参数是函数
+    // function test(x, callback) {
+    //     var y = 10;
+    //     var z = x + y;
+    //     callback(z)
+    // }
+
+    //调用函数test，并传入一个两个参数（数值和函数）
+    //将函数作为参数传进去
+    // test(50, function(c) {
+    //     alert(c)
+    // })
+
+    function test(x, y, callback) {
+
+        callback(x, y);
+    }
+
+    var callback1 = function(x, y) {
+        var z;
+        z = x + y;
+        alert(z);
+    }
+
+    var callback2 = function(x, y) {
+        var z;
+        z = x - y;
+        alert(z);
+    }
+
+
+    test(9, 5, callback2);
+</script>
+
+</html>

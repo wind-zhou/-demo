@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cookieset</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // 封装cookie设置函数
+
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toGMTString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+
+
+
+    // 
+
+    if (navigator.cookieEnabled) {
+        setCookie('username', 'zhouzheng', 7);
+        setCookie('age', '24', 7);
+        setCookie('sex', 'man', 7);
+        setCookie('height', '173', 7);
+        setCookie('hobby', 'travel', 7);
+        setCookie('age', '12', 7);
+
+        // document.cookie = "sex=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+
+        var x = document.cookie;
+        console.log(x)
+
+    } else {
+        alert("不支持cookie")
+    }
+</script>
+
+</html>

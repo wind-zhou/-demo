@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../插件库/effectPackage.js"></script>
+    <title>侧导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #slideNav {
+            width: 400px;
+        }
+        
+        h2 {
+            width: 100%;
+            line-height: 30px;
+            background: red;
+            color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+        
+        li {
+            list-style-type: none;
+        }
+        
+        li {
+            line-height: 20px;
+            background: gray;
+            border-bottom: 1px #fff solid;
+        }
+        
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="slideNav">
+        <h2>手机</h2>
+        <div>
+            <li>huawei</li>
+            <li>mi</li>
+            <li>oppo</li>
+        </div>
+
+        <h2>电脑</h2>
+        <div class="hide">
+            <li>huawei</li>
+            <li>mi</li>
+            <li>oppo</li>
+        </div>
+
+        <h2>美女</h2>
+        <div class="hide">
+            <li>huawei</li>
+            <li>mi</li>
+            <li>oppo</li>
+        </div>
+
+        <h2>学习</h2>
+        <div class="hide">
+            <li>huawei</li>
+            <li>mi</li>
+            <li>oppo</li>
+        </div>
+
+        <h2>吃饭</h2>
+        <div class="hide">
+            <li>huawei</li>
+            <li>mi</li>
+            <li>oppo</li>
+        </div>
+    </div>
+
+
+</body>
+<script>
+    // 1、侧导航结构有哪些变量
+    // 先按此结构封装 变量为
+
+    $(function() {
+        // $("#slideNav").children("h3").click(function() {
+        //     var state = $(this).next("ul").css("display")
+        //     if (state == "block") {
+        //         $(this).next("ul").slideUp()
+        //     } else {
+        //         $(this).next().slideDown().siblings("ul").slideUp();
+        //     }
+        // })
+        $("#slideNav").slideNav("h2", "div")
+    })
+</script>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function getData(url) { //封装promise 接收数据
+        let pro = new Promise(function(resolve, reject) {
+
+            let xml = new XMLHttpRequest();
+            xml.open('post', url);
+            xml.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+            xml.send('username=zyp&userpwd=123456&userclass=64&type=4');
+
+            xml.onreadystatechange = function() {
+                if (this.readyState !== 4) {
+                    return;
+                }
+                if (this.status == 200) {
+                    let data = this.responseText;
+                    resolve(data); //改变状态，并将数据写进promise
+                } else {
+                    reject(new Error(this.status))
+                }
+            }
+        })
+        return pro;
+    }
+
+    let p1 = getData('http://qhdlink-student.top/student/newsa.php');
+    let p2 = getData('http://www.qhdlink-student.top/student/coacha.php');
+
+    let p = Promise.all([p1, p2]);
+    console.log(p)
+</script>
+
+</html>

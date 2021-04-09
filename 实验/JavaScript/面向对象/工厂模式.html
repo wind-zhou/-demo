@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function sayName() {
+        console.log("hello " + this.name)
+
+    }
+
+    function person(name, age) { //创建工厂
+
+        var ps = new Object();
+        ps.name = name;
+        ps.age = age;
+        ps.sayName = sayName;
+
+        return ps;
+
+    }
+
+    var ps1 = person("zhouzheng", 24);
+    var ps2 = person("trump", "70");
+    // console.log(ps1, ps2) //输出两个对象
+
+    console.log(ps1.sayName == ps2.sayName)
+
+    console.log(Object.prototype.toString.call(ps1))
+    console.log(ps1.constructor == Array)
+</script>
+
+</html>

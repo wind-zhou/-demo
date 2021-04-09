@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dedupe</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    let arr = [12, 23, 44, 12, 56, 73, 23, 12, 56];
+
+
+    //使用indexOf 同理可以使用includes
+    function dedupe1(arr) {
+        var newArr = [];
+
+        for (let j in arr) {
+            if (newArr.includes(arr[j]) == false) {
+                newArr.push(arr[j])
+            }
+        }
+
+        return newArr;
+    }
+
+
+    //使用Set
+    function dedupe2(arr) {
+        var newArr = [...new Set(arr)];
+        return newArr;
+
+    }
+
+    //使用Set+Array.form
+    function dedupe3(arr) {
+        var newArr = Array.from(new Set(arr))
+        return newArr;
+    }
+    var newArr1 = dedupe1(arr);
+    var newArr2 = dedupe2(arr);
+    var newArr3 = dedupe3(arr);
+    console.log(newArr1)
+    console.log(newArr2)
+    console.log(newArr3)
+</script>
+
+</html>

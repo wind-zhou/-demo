@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>apply继承</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function Father(sColor) { //父类
+        this.color = sColor;
+    }
+
+
+    Father.prototype.jump = function() { //在父类原型上定义方法
+        alert(this.color + "会跳");
+    }
+
+
+
+    function Son(bColor, name) { //子类
+
+        Father.apply(this, [bColor]); //将classA的this替换成classB的this，正好classB的this指向的是b
+        //实现原理就是前面的构造继承，相当于对前面构造函数的东西做了封装
+
+        this.name = name;
+        this.sayName = function() {
+            alert(this.name)
+        }
+    }
+
+    Son.prototype = new Father("yellow"); //使用原型继承确定继承关系
+    Son.prototype.constructor = Son; //修改子类原型函数里的constructor的指向 
+
+
+    var b = new Son("red", "wind")
+    b.jump()
+    console.log(b)
+</script>
+
+</html>

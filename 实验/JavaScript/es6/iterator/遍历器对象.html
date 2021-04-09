@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>遍历器对象</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    let arr = [2, 45, 22, 63];
+    var it = arr[Symbol.iterator]();
+    // console.log(arr);
+    console.log(it)
+    var info1 = it.next(); //{'value':2,'done':false}
+    it.next(); //改变指针指向
+    var info2 = it.next(); //{'value':22,'done':false}
+    var info3 = it.next();
+    var info4 = it.next(); //{'value':'undefinded','done':true}  遍历已结束
+    console.log(info1)
+    console.log(info2)
+    console.log(info3)
+    console.log(info4)
+</script>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <i onclick="verify()">点击刷新</i>
+    <span id="num" style="border:1px solid #000000"></span>
+</body>
+
+<script>
+    // 0-1  *100   0-99;  
+    // 0-1  *36    0-35;
+
+    var count = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g",
+        "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+    ]
+
+    function verify() {
+        var str = ""; //用来存储验证码
+        for (var i = 0; i < 4; i++) {
+            var randomIndex = Math.floor(Math.random() * 36);
+            //36个数，下标为0-35，因此乘以36
+            str += count[randomIndex];
+        }
+        document.getElementById("num").innerHTML = str;
+    }
+    verify()
+</script>
+
+</html>

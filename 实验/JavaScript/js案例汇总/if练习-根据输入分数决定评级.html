@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+
+<script>
+    var score = prompt("请输入分数");
+
+    if (score > 100 || score < 0) {
+        alert("输入成绩有误！")
+    }
+
+    var level = "";
+    if (score >= 90) {
+        level = "A";
+    } else if (score > 70) {
+        level = "B";
+    } else if (score > 60) {
+        level = "C";
+    } else {
+        level = "D";
+    }
+    document.write("此同学的平分为：" + level)
+</script>
+
+</html>

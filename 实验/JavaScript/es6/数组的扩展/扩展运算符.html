@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组的扩展运算符</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // function add(...z) {
+    //     var sum = 0;
+    //     for (var i in z) {
+    //         sum += z[i]
+    //     }
+    //     return sum;
+    // }
+
+    // console.log(add(12, 55, 1, 10))
+    // console.log(1, ...[2, 3, 4], 5);
+    // 1 2 3 4 5
+
+    function pushArr(arr, ...item) {
+        arr.push(...item)
+    }
+
+    function add(x, y, z) {
+        console.log(x + y + z)
+
+    }
+    var arr = [23, 24, 25]
+
+
+    pushArr(arr, 23, 90, 11)
+
+    // add(...arr)
+
+    console.log(arr)
+</script>
+
+</html>

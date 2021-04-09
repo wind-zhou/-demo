@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>导航接口</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        ul {
+            list-style-type: none;
+        }
+        
+        #nav {
+            width: 600px;
+            margin: 0 auto;
+            /* overflow: hidden; */
+        }
+        
+        #nav>li {
+            float: left;
+            width: 33%;
+            height: 30px;
+            font-size: 25px;
+            line-height: 30px;
+            background-color: #eee;
+            border: 1px salmon solid;
+            text-align: center;
+        }
+        
+        #nav>li ul {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul id="nav">
+        <!-- <li>3343</li> -->
+
+    </ul>
+
+</body>
+
+<script>
+    $(function() {
+        var urlx = "http://www.qhdlink-student.top/test/nav.php";
+
+        function success(data) {
+            var dataArr = JSON.parse(data)
+
+            var ulNode = document.getElementById("nav");
+            for (var i in dataArr) {
+                // var con = "<li><a href='" + dataArr[i].addr_m + "'>" + dataArr[i].title_m + "</a></li>"
+                // ulNode.innerHTML += con;
+
+                //创建li
+                var liNode = document.createElement("li");
+                //创建a
+                var aNode = document.createElement("a");
+                //设置a
+                aNode.href = dataArr[i].addr_m; //设置链接
+                aNode.innerHTML = dataArr[i].title_m; //设置内容
+
+                //设置二级导航
+                console.log(dataArr[i])
+                liNode.appendChild(aNode); //将a加入li
+
+                if (dataArr[i].children_m) {
+                    console.log("有children")
+                    var secondaryUl = document.createElement("ul");
+                    var liChildren = dataArr[i].children_m;
+                    console.log(liChildren)
+                    for (var j in liChildren) { //如果有children，则遍历
+                        console.log(liChildren[j])
+                        var secondaryCon = "<li><a href='" + liChildren[j].addr_c + "'>" + liChildren[j].title_c + "</a></li>";
+                        secondaryUl.innerHTML += secondaryCon;
+                    }
+                    liNode.appendChild(secondaryUl)
+                }
+
+                ulNode.appendChild(liNode); //将li放入ul
+            }
+        }
+
+        $.get(urlx, success)
+    })
+
+
+    // window.onload = function() {
+
+    //     document.getElementById("nav").addEventListener("mouseover", function(e) {
+
+    //         if (e.target.nodeName == "LI") {
+    //             console.log(111)
+    //             e.target.lastElementChild.style.display = "block"
+
+    //         }
+    //     })
+
+    //     document.getElementById("nav").addEventListener("mouseout", function(e) {
+
+    //         if (e.target.nodeName == "LI") {
+    //             console.log(111)
+    //             e.target.lastElementChild.style.display = "none"
+    //         }
+    //     })
+
+    // }
+</script>
+
+</html>

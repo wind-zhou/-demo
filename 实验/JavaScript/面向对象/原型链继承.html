@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型链继承</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    Person.prototype.sayName = function() {
+        alert("我是" + this.name)
+    }
+
+    function Son(weight) {
+        this.weight = weight;
+    }
+
+    function Son2(color) {
+        this.color = color;
+    }
+
+    Son2.prototype = new Person("trump", 70)
+    Son2.prototype.name = "奥巴马"; //修改示例没有鸡毛用，其他的子列感知不到
+    Son2.prototype.__proto__.sayName = function() {
+        alert("父元素的方法被修改了")
+    }
+
+
+    Son.prototype = new Person("zhouzheng", 25)
+
+    var son1 = new Son("173");
+    var son2 = new Son2("red");
+    son1.sayName()
+
+    console.log(son2)
+    console.dir(son1)
+
+    // son1.sayName()
+</script>
+
+</htmls

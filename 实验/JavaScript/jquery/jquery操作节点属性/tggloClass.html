@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery-3.5.1.min.js"></script>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            text-align: center;
+            line-height: 100px;
+        }
+        
+        .two {
+            width: 100px;
+            height: 100px;
+            background-color: #0f0;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="two">周正 </p>
+    <p class="one"> 你好</p>
+
+</body>
+<script>
+    $(function() {
+        var color = $("p").css({
+            "border": "2px solid black",
+            "color": "black",
+        })
+        console.log(color)
+    })
+</script>
+
+</html>

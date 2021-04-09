@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/jump.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+
+<body>
+    <div class="container">
+        <ul class="con">
+            <li class="item imgActive">0</li>
+            <li class="item">1</li>
+            <li class="item">2</li>
+            <li class="item">3</li>
+            <li class="item">4</li>
+        </ul>
+        <button class="btn" id="gopre"><</button>
+        <button class="btn" id="gonext">></button>
+
+        <ul class="nav">
+            <li class="nav_item navActive" data-index="0"></li>
+            <li class="nav_item" data-index="1"></li>
+            <li class="nav_item" data-index="2"></li>
+            <li class="nav_item" data-index="3"></li>
+            <li class="nav_item" data-index="4"></li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    //实现按钮点击切换
+    var items = document.getElementsByClassName("item");
+    var goPreBtn = document.getElementById("gopre");
+    var goNextBtn = document.getElementById("gonext");
+    var navitems = document.getElementsByClassName("nav_item"); //小圆点
+
+
+    var index = 0; //用一个变量 index用来指示当前所在哪一张图片
+
+
+    goNextBtn.onclick = function() { //给按钮绑定事件
+        clearInterval(w)
+        start()
+            //两步走：1、清除所有item的类2、给下一个图片添加avtive的类
+        clearClass();
+        //跳转下一张
+        goNext()
+    }
+
+    goPreBtn.onclick = function() { //给按钮绑定事件
+        //0、先清除计时
+        clearInterval(w)
+        start()
+            //两步走：1、清除所有item的类2、给下一个图片添加avtive的类
+        clearClass();
+        //跳转下一张
+        goPre()
+    }
+
+    for (var k = 0; k < navitems.length; k++) {
+        navitems[k].onclick = function() { //给每个原点绑定事件
+            //0、先清除计时
+            clearInterval(w)
+            start()
+                //还是两步走
+            clearClass(); //清除class
+            //跳转
+            var wind_zhou = this //传递this指针
+            jump(wind_zhou)
+        }
+    }
+
+    function start() {
+        w = setInterval(function() {
+            clearClass();
+            goNext()
+        }, 4000)
+    }
+    start()
+</script>
+
+</html>

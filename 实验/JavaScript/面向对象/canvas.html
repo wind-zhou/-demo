@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas</title>
+    <style>
+        .container {
+            border: 1px solid black;
+            margin: 0 auto;
+            width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <canvas id="canvas" width='600px' height='600px'> </canvas>
+
+    </div>
+    <div>
+        <button id="start" class="btn ">开始</button>
+        <button id="end" class="btn">结束</button>
+        <button id="clear" class="btn">清空</button>
+    </div>
+
+</body>
+
+<script>
+    var myCan = document.getElementById("canvas");
+    if (myCan.getContext) {
+        var ctx = myCan.getContext('2d');
+        // ctx.fillRect(0, 0, 200, 150);
+        // ctx.strokeRect(0, 0, 200, 100);
+
+
+        ctx.beginPath();
+        ctx.moveTo(100, 150);
+        ctx.lineTo(400, 150);
+        // ctx.lineTo(250, 250);
+        // ctx.lineTo(100, 150);
+        ctx.closePath();
+        // ctx.stroke(); //描边
+        // ctx.fill(); //填充
+
+
+        //圆弧
+
+
+        // ctx.beginPath();
+        // ctx.arc(100, 100, 100, 0, Math.PI / 2, true);
+        // ctx.fillStyle = "red";
+        // ctx.strokeStyle = "blue";
+        // ctx.fill();
+        // ctx.stroke();
+        //课下作业： 整个冒泡圆圈，随机变色
+
+        // function randomCir() {
+        //     var pisitionX = Math.floor(Math.random() * 600);
+        //     var pisitionY = Math.floor(Math.random() * 600);
+        //     var r = Math.floor(Math.random() * 100);
+
+        //     //设置随机颜色
+
+        //     var colorStr = '#';
+        //     var color = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f'];
+        //     for (var i = 0; i < 6; i++) {
+
+        //         var randomIndex = Math.floor(Math.random() * 16);
+        //         colorStr += color[randomIndex];
+        //     }
+
+        //     print(pisitionX, pisitionY, r, colorStr)
+        // }
+
+        // function print(x, y, r, color) {
+        //     //绘制圆形
+        //     ctx.beginPath();
+        //     ctx.arc(x, y, r, 0, Math.PI * 2, true);
+        //     ctx.fillStyle = color;
+        //     ctx.fill();
+        // }
+
+        // // w = setInterval(randomCir, 100)
+
+        // var btnStart = document.getElementById("start");
+        // var btnEnd = document.getElementById("end");
+        // var btnClear = document.getElementById("clear")
+
+        // var state = false; //state表示是否可以关闭计时器
+        // btnEnd.onclick = function() {
+        //     if (state == true) {
+        //         clearInterval(w)
+        //     }
+        //     state = false;
+        // }
+
+        // btnStart.onclick = function() {
+        //     if (state == false) {
+        //         w = setInterval(randomCir, 100);
+        //     }
+        //     state = true;
+        // }
+
+        // btnClear.onclick = function() {
+        //     //清空 画布
+        //     console.log(11)
+        //     if (state == false) {
+        //         ctx.clearRect(0, 0, 600, 600)
+        //     }
+        // }
+    }
+</script>
+
+
+
+</html>

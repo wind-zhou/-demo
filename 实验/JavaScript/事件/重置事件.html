@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="abc.php" method="GET" id="myform">
+        姓名：<input type="text" name="username" id="username" value="请输入用户名"><span>*</span>
+        <input type="reset" value="重置">
+        <input type="submit" value="提交">
+
+    </form>
+
+</body>
+
+<script>
+    document.getElementById("myform").onreset = function() {
+            var x = window.confirm("Are You Sure?")
+            if (!x) {
+                //取消重置
+                return false; //如果返回false则会被表单接收到，从而取消重置
+            }
+        }
+        // 
+    document.getElementById("username").onchange = function() {
+
+            var len = this.value.length;
+            if (len < 3) {
+                this.nextSibling.innerHTML = "长度太小了弟弟！"
+            } else {
+                this.nextSibling.innerHTML = "你复活啦！";
+            }
+
+        }
+        // 
+    document.getElementById("myform").onsubmit = function() {
+        var s = this.children[1].innerHTML;
+        if (s === "长度太小了弟弟！" || s === "*") {
+            return false;
+        }
+    }
+</script>
+
+</html>

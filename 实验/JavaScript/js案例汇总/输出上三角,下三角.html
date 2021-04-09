@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //都是两个循环，外层控制行，内层控制输出的个数
+    // 输出上三角
+    for (var i = 0; i < 5; i++) {
+        for (var j = 0; j < 5 - i; j++) {
+            document.write("*\t")
+        }
+        document.write("<br>")
+    }
+    document.write("<hr>")
+        //输出下三角
+
+    for (var i = 1; i <= 5; i++) {
+        for (var j = 0; j < i; j++) {
+            document.write("*\t")
+        }
+        document.write("<br>")
+    }
+    document.write("<hr>")
+        //输出正三角
+        //两部分，1、空格2、*
+    for (var i = 1; i <= 5; i++) {
+        //输出空格顶位置
+        for (var a = 1; a < 6 - i; a++) {
+            document.write("&nbsp");
+        }
+        for (var j = 1; j <= (2 * i - 1); j++) {
+            document.write("*")
+        }
+        document.write("<br>")
+    }
+</script>
+
+</html>

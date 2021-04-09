@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function getCon(url) {
+        let pro = new Promise((resolve, reject) => {
+            let xml = new XMLHttpRequest();
+            xml.open("post", url);
+            xml.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+            xml.send('username=zyp&userpwd=123456&userclass=64&type=4');
+            xml.onreadystatechange = () => {
+
+                if (xml.readyState !== 4) {
+                    return
+                }
+
+                if (xml.status == 200) {
+                    resolve(xml.responseText)
+                } else {
+                    reject(new Error(xml.status))
+                }
+            }
+        })
+        return pro;
+    }
+
+    var pro1 = getCon('http://qhdlink-student.top/student/newsa.php');
+    var pro2 = getCon('http://www.qhdlink-student.p/student/coacha.php');
+
+    let p = Promise.allSettled([pro1, pro2])
+
+    // p.then(result => { //处理成功时的函数
+    //         console.log(result);
+    //         // throw new Error('test'); // 人为的返回一个错误
+    //     }).catch(err => {
+    //         console.log(err)
+    //     })
+    console.log(p)
+</script>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #one {
+            width: 10px;
+            height: 200px;
+            background: pink;
+            transition: width 1s;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="one">
+
+    </div>
+    <button onclick="stopChange()">暂停变换</button>
+    <!-- <h1 id="time"></h1> -->
+</body>
+
+<script>
+    //1、
+    // function changeWidth() {
+    //     document.getElementById("one").style.width = "300px"
+    // }
+
+    // i = setTimeout(changeWidth, 3000); //每个setTimeout会返回一个全局的标识
+
+    // function stopChange() {
+
+    //     clearTimeout(i)
+    // }
+
+    //  2、 时钟
+
+    function time() {
+        var date = new Date();
+        document.getElementById("time").innerHTML = date.toLocaleTimeString();
+    }
+    window.setInterval(time, 1)
+</script>
+
+</html>

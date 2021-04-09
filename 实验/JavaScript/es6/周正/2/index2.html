@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title> 菜品接口</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            border: 1px solid black;
+        }
+        
+        img {
+            display: block;
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="table">
+        <th>菜品编号</th>
+        <th>菜品名称</th>
+        <th>生产时间</th>
+        <th>失效时间</th>
+        <th>价格</th>
+        <th>折扣</th>
+        <th>评价</th>
+        <th>照片</th>
+    </table>
+</body>
+
+<script>
+    $(function() {
+        var obj = {
+            "url": "http://www.qhdlink-student.top/student/coacha.php",
+            "type": "post",
+            "asyn": "true",
+            "dataType": "json",
+            "data": {
+                "username": "zyp",
+                "userpwd": "123456",
+                "userclass": "64",
+                "type": "4"
+            },
+            "success": function(data) {
+
+                console.log(data)
+
+                var tableNode = document.getElementById("table")
+
+                for (var i in data) {
+
+                    var trNode = document.createElement("tr")
+                    console.log(data[i])
+
+                    var trCon = data[i];
+                    for (var j in trCon) {
+                        var tdNode = document.createElement("td");
+                        //判断是否有图片
+                        if (j == 'path_coach') {
+
+                            var con = `<img src='http://www.qhdlink-student.top/${trCon[j]}' >`;
+                            tdNode.innerHTML = con;
+                        } else {
+                            tdNode.innerHTML = trCon[j]
+                        }
+                        trNode.appendChild(tdNode);
+                    }
+                    tableNode.appendChild(trNode)
+                }
+
+            }
+        }
+        $.ajax(obj);
+    })
+</script>
+
+</html>

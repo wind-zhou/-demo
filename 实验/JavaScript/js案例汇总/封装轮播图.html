@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        #banner {
+            width: 400px;
+            height: 200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        #container {
+            width: 400px;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        #con {
+            width: 1600px;
+            height: 200px;
+        }
+        
+        #con img {
+            float: left;
+            width: 400px;
+            height: 200px;
+        }
+        
+        ul {
+            list-style-type: none;
+        }
+        
+        #show {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+        }
+        
+        #show li {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #fff;
+            float: left;
+            margin-right: 20px;
+        }
+        
+        .active {
+            background: #000 !important;
+        }
+    </style>
+</head>
+
+<div id="banner">
+
+    <div id="container">
+        <div id="con">
+            <img date-index="0" src="./img/city.jpg" alt="">
+            <img date-index="1" src="./img/city2.jpg" alt="">
+            <img date-index="2" src="./img/city3.jpg" alt="">
+            <img date-index="3" src="./img/city4.jpg" alt="">
+        </div>
+
+        <ul id="show">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+</body>
+<script>
+    function LBT() {
+        document.getElementById("container").scrollLeft += 20;
+        if (document.getElementById("container").scrollLeft >= 400) { //当划过一张图片时，划过去的拼接到图片移动到最后，同时滚动条归零（既然要无限循环，滚动条一定不断要归零）
+            document.getElementById("con").appendChild(document.getElementById("con").firstElementChild); //移动节点
+            document.getElementById("container").scrollLeft = 0;
+            clearInterval(f);
+            start();
+        }
+    }
+
+    function start() {
+        setTimeout(function() {
+            f = setInterval(LBT, 100);
+            var img_index = document.getElementById("con").children[0].getAttribute("date-index");
+            console.log(img_index);
+            var listList = document.getElementById("show").children;
+            console.log(listList);
+            for (var i = 0; i < listList.length; i++) {
+                listList[i].className = " ";
+            }
+            listList[(parseInt(img_index) + 1) % 4].className = "active";
+        }, 2000)
+    }
+
+    //点击焦点切换图片
+
+    start();
+</script>
+
+</html>

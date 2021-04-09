@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    var list = {
+        name: 'zhouzheng',
+        age: 13,
+        hobby: 'swim'
+    }
+
+
+    for (var i in list) {
+        console.log(list[i])
+    }
+    var keyArr = Object.keys(list)
+    var valueArr = Object.values(list)
+    console.log(keyArr)
+    console.log(valueArr)
+
+
+    // var obj1 = {
+    //     name: '周正',
+    //     sayName: function() {
+    //         console.log(this.name)
+    //     }
+    // }
+
+    // var obj2 = {
+    //     age: 24,
+    //     sayAge() {
+    //         console.log(`my age is ${this.age}`)
+    //     }
+    // }
+
+    // obj1.sayName()
+    // obj2.sayAge()
+</script>
+
+</html>

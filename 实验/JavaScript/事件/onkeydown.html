@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <textarea name="" id="con" cols="30" rows="10"></textarea>
+    <p id="num"><span>0</span><span>/15</span></p>
+</body>
+
+<script>
+    document.getElementById("con").onkeyup = function() {
+        console.log(this.value);
+    }
+
+    //统计输入框的字符个数
+    document.getElementById("con").onkeyup = function() {
+        var str = this.value
+        var strLen = str.length;
+
+        document.getElementById("num").firstElementChild.innerHTML = strLen;
+
+        if (strLen >= 15) {
+            //大于15时，截取前15个字母
+            var tmp = str.slice(0, 15);
+            console.log(tmp)
+                // 讲解去的字符串传入输入框
+
+            //str=value  问什么这么写不行？
+            this.value = tmp;
+            strLen = this.value.length;
+            //重新赋值长度
+            //这句话如果不写则会导致同级的值诶16，因为当点击第16次时，点击结束后
+            //，触发事件前新输入的次被压入了输入流，此时计数加1，尽管后面判定把输入的第16个
+            //字符截掉了，但刚才计数的值仍未16,因此需要重新赋值一下长度
+            document.getElementById("num").firstElementChild.innerHTML = strLen;
+        }
+
+
+    }
+</script>
+
+</html>

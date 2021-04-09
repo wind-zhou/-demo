@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../插件库/effectPackage.js"></script>
+    <title>TAb</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            position: relative;
+        }
+        
+        ul {
+            list-style-type: none;
+        }
+        
+        #nav {
+            width: 400px;
+            height: 30px;
+            margin: 0 auto;
+        }
+        
+        #nav li {
+            width: 100px;
+            height: 100%;
+            float: left;
+            border: #000 1px solid;
+            line-height: 30px;
+            text-align: center;
+        }
+        
+        #con {
+            border: #000 1px solid;
+            width: 400px;
+            margin: 0 auto;
+        }
+        
+        #con img {
+            display: block;
+            width: 400px;
+            height: 300px;
+        }
+        
+        #con li {
+            border: #000 1px solid;
+            display: none;
+        }
+        
+        .active {
+            background-color: tomato;
+        }
+        
+        .show {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <ul id="nav">
+        <li date-index="0" class="active">体育</li>
+        <li date-index="1">科技</li>
+        <li date-index="2">娱乐</li>
+        <li date-index="3">日本</li>
+    </ul>
+
+
+    <ul id="con">
+        <li style="display:block"><img src="../js案例汇总/img/city.jpg" alt=""></li>
+        <li><img src="../js案例汇总/img/city2.jpg" alt=""></li>
+        <li><img src="../js案例汇总/img/city3.jpg" alt=""></li>
+        <li><img src="../js案例汇总/img/city4.jpg" alt=""></li>
+    </ul>
+
+</body>
+
+<script>
+    //1、点击导航的li。点中的变换颜色
+    // var liList = document.getElementById("nav").children;
+
+    // for (var i = 0; i < liList.length; i++) {
+    //     liList[i].onclick = function() {
+    //         for (var j = 0; j < liList.length; j++) {
+    //             liList[j].className = "";
+    //         }
+
+    //         this.className = "active";
+    //         var li_index = this.getAttribute("date-index");
+    //         console.log(li_index);
+
+    //         var conLiList = document.getElementById("con").children;
+    //         for (var k = 0; k < conLiList.length; k++) {
+    //             conLiList[k].className = "";
+    //         }
+    //         conLiList[li_index].className = "show";
+    //     }
+    // }
+
+
+    $(function() {
+        $("#nav").children().click(function() {
+            $(this).css("backgroundColor", "tomato").siblings().css("backgroundColor", "#fff")
+            var index = $(this).index();
+            $("#con").children().eq(index).show().siblings().hide()
+        })
+
+        // $("#nav").tablePage("#con")
+    })
+</script>
+
+</html>

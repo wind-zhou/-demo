@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var str1 = "http://baidu.com?name=wind-zhou&pwd=123456&age=18";
+
+    //1、先以？截取一次
+
+    var str2 = str1.slice(str1.indexOf("?") + 1);
+    //2、以&再次进行切割。生成数组
+
+    var strArr = str2.split("&");
+    var keyArr = [];
+    var valueArr = [];
+
+    //3、遍历，并再次截取
+    for (var i = 0; i < strArr.length; i++) {
+
+        var allArr = strArr[i].split("=");
+        keyArr.push(allArr[0]);
+        valueArr.push(allArr[1]);
+    }
+
+    console.log(keyArr)
+    console.log(valueArr)
+</script>
+
+</html>
